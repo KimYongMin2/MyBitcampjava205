@@ -19,9 +19,9 @@ public class Calculator {
 
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
-        calculator.plus(6,3);
-        calculator.minus(6,3);
-        calculator.multi(6,3);
-        calculator.div(6,3);
+        calculator.plus(10, 20);
+        calculator.minus(20, 10);
+        calculator.div(10, 3);
+        calculator.multi(2, 5);
     }
 }
