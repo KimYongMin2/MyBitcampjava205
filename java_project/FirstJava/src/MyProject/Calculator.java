@@ -3,7 +3,7 @@ package MyProject;
 import java.util.Scanner;
 
 public class Calculator {
-    public int plus(int num1, int num2){
+    public long plus(int num1, int num2){
         return num1 + num2;
     }
 
