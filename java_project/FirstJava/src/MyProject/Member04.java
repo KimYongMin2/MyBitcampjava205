@@ -34,7 +34,6 @@ public class Member04 {
         int birthYear = getInputInteger();
         member.vaccinPossible(birthYear);
         member.healthScreenings(birthYear);
-
     }
     private static int getInputInteger() {
         Scanner scanner = new Scanner(System.in);
