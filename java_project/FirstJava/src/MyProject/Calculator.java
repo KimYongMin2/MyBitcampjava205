@@ -29,15 +29,19 @@ public class Calculator {
 
 
     public static void main(String[] args) {
+        System.out.print("num1 값을 입력하여 주세요 : ");
+        int num1 = getInputInteger();
+        System.out.print("num2 값을 입력하여 주세요 : ");
+        int num2 = getInputInteger();
         Calculator calculator = new Calculator();
-        System.out.println(calculator.plus(10, 20));
-        System.out.println(calculator.minus(20, 10));
-        System.out.println(calculator.div(10, 3));
-        System.out.println(calculator.multi(2, 5));
+        System.out.println("더하기 : "  + calculator.plus(num1, num2));
+        System.out.println("빼기 : "  +calculator.minus(num1, num2));
+        System.out.println("곱하기 : "  +calculator.div(num1, num2));
+        System.out.println("나누기 : "  +calculator.multi(num1, num2));
         System.out.print("반지름을 입력해주세요 : ");
         double radius = getInputInteger();
-        System.out.println(calculator.round(radius));
-        System.out.println(calculator.area(radius));
+        System.out.println("원둘레 : "  +calculator.round(radius));
+        System.out.println("원넓이 : "  +calculator.area(radius));
 
     }
 
