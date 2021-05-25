@@ -1,13 +1,12 @@
 package MyProject;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class Member {
     //04번
     void vaccinPossible(int birthYear){
-        int age = Integer.parseInt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy")))-birthYear+1;
+        int age = Calendar.getInstance().get(Calendar.YEAR)-birthYear+1;
         if(age < 15 || age >= 65){
             System.out.println("무료예방접종이 가능합니다.");
         }else{
@@ -16,9 +15,9 @@ public class Member {
     }
 
     void healthScreenings(int birthYear){
-        int age = Integer.parseInt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy")))-birthYear+1;
+        int age = Calendar.getInstance().get(Calendar.YEAR)-birthYear+1;
         if(age >= 20){
-            if(age % 2 == Integer.parseInt(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy"))) % 2){
+            if(age % 2 == Calendar.getInstance().get(Calendar.YEAR) % 2){
                 System.out.println("건강검진 검사대상입니다.");
                 if(age >= 40){
                     System.out.println("암 검사도 가능합니다.");
