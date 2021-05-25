@@ -28,17 +28,6 @@ public class Member {
         }
     }
     public static void main(String[] args) {
-
-        // 02번
-        String name = "손흥민";
-        int age = 27;
-        double height = 185.3d;
-        float weight = 45.8f;
-
-        boolean hasBook = false;
-        System.out.println("제 이름은 " + name + "입니다.");
-        System.out.println("이름 : " + name + " 나이 : " + age + " 키 : " + height);
-        System.out.println("책 보유 여부 : " + hasBook);
         // 04번
         Member member = new Member();
         System.out.print("태어난 년도를 입력해주세요 : ");
