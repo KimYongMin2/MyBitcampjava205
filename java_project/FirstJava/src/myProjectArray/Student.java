@@ -1,5 +1,7 @@
 package myProjectArray;
 
+import java.util.Scanner;
+
 public class Student {
     private String studentName;
     private int koreanScore;
@@ -42,13 +44,19 @@ public class Student {
 
 
     public static void main(String[] args) {
-        Student[] studentInfo = new Student[10];
+        Student[] studentInfo = new Student[3];
         for (int i = 0; i < studentInfo.length; i++) {
             Student student = new Student();
             studentInfo[i] = student;
-            studentInfo[i].setStudentName("studentName"+i);
-            studentInfo[i].setKoreanScore(70);
-            studentInfo[i].setMathScore(50);
+            System.out.print("이름을 입력하여 주세요 : ");
+            String studentName = getInputString();
+            studentInfo[i].setStudentName(studentName);
+            System.out.print("국어 점수를 입력하여 주세요 : ");
+            int koreanScore = getInputInteger();
+            studentInfo[i].setKoreanScore(koreanScore);
+            System.out.print("수학점수를 입력하여 주세요 : ");
+            int mathScore = getInputInteger();
+            studentInfo[i].setMathScore(mathScore);
         }
 
         for (Student st : studentInfo) {
@@ -57,5 +65,16 @@ public class Student {
             System.out.println("총점 : " + st.getTotalScore() + "평균 : " + st.getAverageScore());
         }
 
+    }
+
+    private static int getInputInteger() {
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        return  Integer.parseInt(input);
+    }
+
+    private static String getInputString() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
     }
 }
