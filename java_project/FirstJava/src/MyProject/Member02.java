@@ -1,6 +1,6 @@
 package MyProject;
 
-public class Member2 {
+public class Member02 {
     public static void main(String[] args) {
         // 02번
         String name = "손흥민";

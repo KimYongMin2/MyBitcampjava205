@@ -3,7 +3,7 @@ package MyProject;
 import java.util.Calendar;
 import java.util.Scanner;
 
-public class Member {
+public class Member04 {
     //04번
     void vaccinPossible(int birthYear){
         int age = Calendar.getInstance().get(Calendar.YEAR)-birthYear+1;
@@ -29,7 +29,7 @@ public class Member {
     }
     public static void main(String[] args) {
         // 04번
-        Member member = new Member();
+        Member04 member = new Member04();
         System.out.print("태어난 년도를 입력해주세요 : ");
         int birthYear = getInputInteger();
         member.vaccinPossible(birthYear);
