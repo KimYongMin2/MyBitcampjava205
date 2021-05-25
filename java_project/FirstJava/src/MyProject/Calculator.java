@@ -3,15 +3,13 @@ package MyProject;
 import java.util.Scanner;
 
 public class Calculator {
-    public long plus(int num1, int num2){
-        return num1 + num2;
-    }
+    public long plus(int num1, int num2){ return num1 + num2; }
 
-    public int minus(int num1, int num2){
+    public long minus(int num1, int num2){
         return num1 - num2;
     }
 
-    public int multi(int num1, int num2){
+    public long multi(int num1, int num2){
         return num1 * num2;
     }
 
