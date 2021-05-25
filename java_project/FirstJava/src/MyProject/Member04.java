@@ -8,6 +8,7 @@ public class Member04 {
     void vaccinPossible(int birthYear){
         System.out.println("-- 독감 예방 접종 가능 여부를 확인합니다. --");
         int age = Calendar.getInstance().get(Calendar.YEAR)-birthYear+1;
+        // if(!(age>=15 && age<65)) 좁은 범위를 표현하고 논리부정을 하는게 편하다.
         if(age < 15 || age >= 65){
             System.out.println("무료예방접종이 가능합니다.");
         }else{
