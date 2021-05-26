@@ -12,7 +12,7 @@ public class Person {
         this.idNumber = idNumber;
     }
     public void hello(){
-        age = Calendar.getInstance().get(Calendar.YEAR) - Integer.parseInt(idNumber.substring(0,2))-1899;
-        System.out.println("안녕하세요. 저는 " + name + "입니다. " + age + "살 입니다.");
+        this.age = Calendar.getInstance().get(Calendar.YEAR) - Integer.parseInt(idNumber.substring(0,2))-1899;
+        System.out.println("안녕하세요. 저는 " + this.name + "입니다. " + this.age + "살 입니다.");
     }
 }

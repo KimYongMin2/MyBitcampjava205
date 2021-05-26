@@ -2,21 +2,20 @@ package myProjectExtends;
 
 public class Female extends Person{
     private String sex = "여자";
-    private boolean hasCouple = false;
+    private boolean hasBadchim = false;
 
     public Female(String name, String idNumber) {
         super(name, idNumber);
     }
 
-    void showCouple(){
-        System.out.println("커플입니까?" + hasCouple);
+    void showHasBadchim(){
+        System.out.println("받침이있습니까? : " + hasBadchim);
     }
 
     @Override
     public void hello() {
         super.hello();
         System.out.println("여자입니다.");
-        showCouple();
+        showHasBadchim();
     }
-
 }
