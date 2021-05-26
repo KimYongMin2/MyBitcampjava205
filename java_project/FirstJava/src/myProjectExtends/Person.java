@@ -4,9 +4,9 @@ package myProjectExtends;
 import java.util.Calendar;
 
 public class Person {
-    String name;
-    String idNumber;
-    int age;
+    private String name;
+    private String idNumber;
+    private int age;
     public Person(String name, String idNumber){
         this.name = name;
         this.idNumber = idNumber;

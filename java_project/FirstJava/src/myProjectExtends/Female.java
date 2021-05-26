@@ -1,8 +1,8 @@
 package myProjectExtends;
 
 public class Female extends Person{
-    String sex = "여자";
-    boolean hasCouple = false;
+    private String sex = "여자";
+    private boolean hasCouple = false;
 
     public Female(String name, String idNumber) {
         super(name, idNumber);
