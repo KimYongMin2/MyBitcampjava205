@@ -53,7 +53,7 @@ public class Student {
 
 
     public static void main(String[] args) {
-        Student[] studentInfo = new Student[3];
+        Student[] studentInfo = new Student[10];
         for (int i = 0; i < studentInfo.length; i++) {
             Student student = new Student();
             studentInfo[i] = student;
