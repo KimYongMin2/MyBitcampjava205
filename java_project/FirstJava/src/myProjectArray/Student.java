@@ -7,14 +7,23 @@ public class Student {
     private int koreanScore;
     private int mathScore;
     private int totalScore;
+    private int englishScore;
     private double averageScore;
 
+    public int getEnglishScore() {
+        return englishScore;
+    }
+
+    public void setEnglishScore(int englishScore) {
+        this.englishScore = englishScore;
+    }
+
     public int getTotalScore() {
-        return totalScore = koreanScore + mathScore;
+        return totalScore = koreanScore + mathScore + englishScore;
     }
 
     public double getAverageScore() {
-        return averageScore = totalScore / 2;
+        return averageScore = totalScore / 3;
     }
 
     public String getStudentName() {
@@ -54,6 +63,9 @@ public class Student {
             System.out.print("국어 점수를 입력하여 주세요 : ");
             int koreanScore = getInputInteger();
             studentInfo[i].setKoreanScore(koreanScore);
+            System.out.print("영어 점수를 입력하여 주세요 : ");
+            int englishScore = getInputInteger();
+            studentInfo[i].setEnglishScore(englishScore);
             System.out.print("수학점수를 입력하여 주세요 : ");
             int mathScore = getInputInteger();
             studentInfo[i].setMathScore(mathScore);
@@ -61,7 +73,7 @@ public class Student {
 
         for (Student st : studentInfo) {
             System.out.println(st.getStudentName() + "의 국어점수 : " + st.getKoreanScore() +
-                    "수학점수 : " + st.getMathScore());
+                    "영어점수 : " + st.getEnglishScore() +  "수학점수 : " + st.getMathScore());
             System.out.println("총점 : " + st.getTotalScore() + "평균 : " + st.getAverageScore());
         }
 
