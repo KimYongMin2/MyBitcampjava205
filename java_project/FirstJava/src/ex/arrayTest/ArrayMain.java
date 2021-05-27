@@ -1,6 +1,6 @@
 package ex.arrayTest;
 
-import java.util.Scanner;
+import common.util.ScannerUtil;
 
 public class ArrayMain {
     private static void arrayInfoFirstset(ArrayInfo[] arrayInfo) {
@@ -18,7 +18,7 @@ public class ArrayMain {
         while (!(button==5)) {
             try {
                 showMenu();
-                button = Integer.parseInt(getInputString());
+                button = ScannerUtil.getInputInteger();
                 switch (button) {
                     case 1:
                         arrayInfo[count] = arrayControl.addArrayInfo();
@@ -48,10 +48,5 @@ public class ArrayMain {
         System.out.println("1. 저장    2. 삭제    3. 검색    4. 출력    5. 종료");
         System.out.println("------------------------------------------------");
         System.out.print("원하는 기능을 선택해주세요 : ");
-    }
-
-    public static String getInputString(){
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
     }
 }
