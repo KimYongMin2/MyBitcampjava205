@@ -56,7 +56,7 @@ public class ScoreSystem {
         this.korSubjectAvg = korSubjectAvg;
     }
 
-    void getSubjectSumAvg(Student[] students) {
+    void setSubjectSumAvg(Student[] students) {
         for (int i = 0; i < students.length; i++) {
             engSubjectSum += students[i].getEng();
             mathSubjectSum += students[i].getMath();
