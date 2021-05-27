@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class ArrayControl {
     ArrayInfo addArrayInfo() {
+        System.out.println("------------------------------------------------");
         System.out.print("이름을 입력해주세요 : ");
         String name = getInputString();
         System.out.print("전화번호를 입력해주세요 : ");
@@ -15,6 +16,7 @@ public class ArrayControl {
     }
 
     void delArrayInfo(ArrayInfo[] arr){
+        System.out.println("------------------------------------------------");
         System.out.print("삭제할 이름을 입력해주세요 : ");
         String name = getInputString();
         int temp=0;
@@ -38,6 +40,7 @@ public class ArrayControl {
     }
 
     void findArrayInfo(ArrayInfo[] arr){
+        System.out.println("------------------------------------------------");
         System.out.print("찾을 이름을 입력해주세요 : ");
         String name = getInputString();
         int temp=0;
@@ -47,14 +50,17 @@ public class ArrayControl {
                 break;
             }
         }
+
+        System.out.println("-----------------정보를 출력합니다-----------------");
         System.out.println(arr[temp].getName());
         System.out.println(arr[temp].getTelNum());
         System.out.println(arr[temp].getBirth());
     }
 
     void showArrayInfo(ArrayInfo[] arr){
+        System.out.println("------------------현재 상황입니다------------------");
         for (int i = 0; i < ArrayMain.count; i++) {
-            System.out.println(arr[i].getName());
+            System.out.println((i+1) + " " +arr[i].getName());
         }
     }
 
