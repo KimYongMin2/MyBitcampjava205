@@ -3,6 +3,30 @@ package homework;
 import java.util.Scanner;
 
 public class ArrAdd {
+    public static void addOneDArr(int[][] arr, int add){
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                arr[i][j] += add;
+            }
+        }
+    }
+
+    private static void showInputScore(int[][] score) {
+        System.out.println("현재상황 : ");
+        for (int[] ints : score) {
+            for (int i : ints) {
+                System.out.print(i + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static int getInputInt(){
+        Scanner scanner = new Scanner(System.in);
+        String input = scanner.nextLine();
+        return Integer.parseInt(input);
+    }
+
     public static void main(String[] args) {
         int processionRow;
         int processionColumn;
@@ -28,29 +52,5 @@ public class ArrAdd {
 
         showInputScore(score);
 
-    }
-
-    public static void addOneDArr(int[][] arr, int add){
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[i].length; j++) {
-                arr[i][j] += add;
-            }
-        }
-    }
-
-    private static void showInputScore(int[][] score) {
-        System.out.println("현재상황 : ");
-        for (int[] ints : score) {
-            for (int i : ints) {
-                System.out.print(i + " ");
-            }
-            System.out.println();
-        }
-    }
-
-    public static int getInputInt(){
-        Scanner scanner = new Scanner(System.in);
-        String input = scanner.nextLine();
-        return Integer.parseInt(input);
     }
 }
