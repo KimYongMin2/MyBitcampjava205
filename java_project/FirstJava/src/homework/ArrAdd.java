@@ -28,12 +28,10 @@ public class ArrAdd {
     }
 
     public static void main(String[] args) {
-        int processionRow;
-        int processionColumn;
         System.out.print("행(가로)수를 입력해주세요 : ");
-        processionRow = getInputInt();
+        int processionRow = getInputInt();
         System.out.print("열(세로)수를 입력해주세요 : ");
-        processionColumn = getInputInt();
+        int processionColumn = getInputInt();
         int[][] score = new int[processionRow][processionColumn];
 
         for (int i = 0; i < score.length; i++) {
