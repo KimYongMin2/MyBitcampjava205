@@ -1,16 +1,17 @@
 package ex.arrayTest;
 
-import java.util.Scanner;
+import common.util.ScannerUtil;
+
 
 public class ArrayControl {
     ArrayInfo addArrayInfo() {
         System.out.println("------------------------------------------------");
         System.out.print("이름을 입력해주세요 : ");
-        String name = getInputString();
+        String name = ScannerUtil.getInputString();
         System.out.print("전화번호를 입력해주세요 : ");
-        String telNum = getInputString();
+        String telNum = ScannerUtil.getInputString();
         System.out.print("생일을 입력해주세요 : ");
-        String birth = getInputString();
+        String birth = ScannerUtil.getInputString();
         ArrayMain.count++;
         return new ArrayInfo(name, telNum, birth);
     }
@@ -18,7 +19,7 @@ public class ArrayControl {
     void delArrayInfo(ArrayInfo[] arr){
         System.out.println("------------------------------------------------");
         System.out.print("삭제할 이름을 입력해주세요 : ");
-        String name = getInputString();
+        String name = ScannerUtil.getInputString();
         int temp=0;
         boolean check = false;
         for (int i = 0; i < arr.length; i++) {
@@ -42,7 +43,7 @@ public class ArrayControl {
     void findArrayInfo(ArrayInfo[] arr){
         System.out.println("------------------------------------------------");
         System.out.print("찾을 이름을 입력해주세요 : ");
-        String name = getInputString();
+        String name = ScannerUtil.getInputString();
         int temp=0;
         for (int i = 0; i < arr.length; i++) {
             if(arr[i].getName().equals(name)){
@@ -62,10 +63,5 @@ public class ArrayControl {
         for (int i = 0; i < ArrayMain.count; i++) {
             System.out.println((i+1) + " " +arr[i].getName());
         }
-    }
-
-    public static String getInputString(){
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
     }
 }
