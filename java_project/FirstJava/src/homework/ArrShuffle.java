@@ -38,14 +38,13 @@ public class ArrShuffle {
     }
 
     private static void showInputScore(int[][] score) {
-        System.out.println("입력한 수 : ");
-        for (int i = 0; i < score.length; i++) {
-            for (int j = 0; j < score[i].length; j++) {
-                System.out.print(score[i][j] + " ");
+        System.out.println("현재상황 : ");
+        for (int[] ints : score) {
+            for (int i : ints) {
+                System.out.print(i + " ");
             }
             System.out.println();
         }
-        System.out.println();
     }
 
     public static int getInputInt(){
