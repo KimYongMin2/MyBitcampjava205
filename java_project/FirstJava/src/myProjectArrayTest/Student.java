@@ -10,14 +10,15 @@ public class Student {
     private int math;
 
     public Student(String name, int kor, int eng, int math) {
-        super();
         this.name = name;
         this.kor = kor;
         this.eng = eng;
         this.math = math;
     }
 
-    public Student() {}
+    public Student() {
+        this("이름없음",0,0,0);
+    }
 
     //	② 변수는 캡슐화를 합니다. getter/setter 메소드를 정의합니다.
     public String getName() {
