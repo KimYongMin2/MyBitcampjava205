@@ -23,9 +23,8 @@ public class ArrShuffle {
     }
 
     private static void ArrShuffle(int[][] arr){
-        int[] temp;
         for (int i = arr.length-1; i > 0; i--) {
-            temp = arr[i];
+            int[] temp = arr[i];
             arr[i] = arr[i-1];
             arr[i-1] = temp;
         }
