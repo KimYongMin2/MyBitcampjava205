@@ -21,24 +21,13 @@ public class ArrayInfo {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getTelNum() {
         return telNum;
-    }
-
-    public void setTelNum(String telNum) {
-        this.telNum = telNum;
     }
 
     public String getBirth() {
         return birth;
     }
 
-    public void setBirth(String birth) {
-        this.birth = birth;
-    }
 
 }
