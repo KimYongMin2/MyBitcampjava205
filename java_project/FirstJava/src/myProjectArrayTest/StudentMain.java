@@ -37,13 +37,13 @@ public class StudentMain {
         }
         scoreSystem.getSubjectSumAvg(students);
         System.out.println("===============================================");
-        System.out.print("총합" + " \t" + scoreSystem.korSubjectSum);
-        System.out.print("\t" + scoreSystem.engSubjectSum);
-        System.out.println("\t" + scoreSystem.mathSubjectSum);
+        System.out.print("총합" + " \t" + scoreSystem.getKorSubjectSum());
+        System.out.print(" \t" + scoreSystem.getEngSubjectSum());
+        System.out.println(" \t" + scoreSystem.getMathSubjectSum());
         System.out.println("===============================================");
-        System.out.print("평균" + " \t" + scoreSystem.korSubjectAvg);
-        System.out.print("\t" + scoreSystem.engSubjectAvg);
-        System.out.println("\t" + scoreSystem.mathSubjectAvg);
+        System.out.print("평균" + " \t" + scoreSystem.getKorSubjectAvg());
+        System.out.print(" \t" + scoreSystem.getEngSubjectAvg());
+        System.out.println(" \t" + scoreSystem.getMathSubjectAvg());
     }
 
 }
