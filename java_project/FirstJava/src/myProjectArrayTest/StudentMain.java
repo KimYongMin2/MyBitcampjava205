@@ -35,7 +35,7 @@ public class StudentMain {
             System.out.printf("\t");
             System.out.println(students[i].getAvg());
         }
-        scoreSystem.getSubjectSumAvg(students);
+        scoreSystem.setSubjectSumAvg(students);
         System.out.println("===============================================");
         System.out.print("총합" + " \t" + scoreSystem.getKorSubjectSum());
         System.out.print(" \t" + scoreSystem.getEngSubjectSum());
