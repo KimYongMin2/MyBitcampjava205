@@ -3,7 +3,9 @@ package project1;
 import common.util.ScannerUtil;
 
 public class SmartPhone {
-    static int count;
+    private static int count;
+    int temp=0;
+    boolean check = false;
     static {
         count = 0;
     }
@@ -12,6 +14,18 @@ public class SmartPhone {
         for (int i = 0; i < contacts.length; i++) {
             Contact contact = new Contact("미입력", "미입력", "미입력", "미입력", 000, "미입력");
             contacts[i] = contact;
+        }
+    }
+
+    private void findContactUser(String name) {
+        temp=0;
+        check = false;
+        for (int i = 0; i < contacts.length; i++) {
+            if(contacts[i].getName().equals(name)){
+                temp = i;
+                check = true;
+                break;
+            }
         }
     }
 
@@ -38,15 +52,7 @@ public class SmartPhone {
     void delContacts(){
         System.out.print("삭제할 이름을 입력해주세요 : ");
         String name = ScannerUtil.getInputString();
-        int temp=0;
-        boolean check = false;
-        for (int i = 0; i < contacts.length; i++) {
-            if(contacts[i].getName().equals(name)){
-                temp = i;
-                check = true;
-                break;
-            }
-        }
+        findContactUser(name);
         if (check == true) {
             for (int i = temp; i < contacts.length - 1; i++) {
                 contacts[i] = contacts[i + 1];
@@ -66,15 +72,7 @@ public class SmartPhone {
     void findContactInfo(){
         System.out.print("정보를 볼 이름을 입력해주세요 : ");
         String name = ScannerUtil.getInputString();
-        int temp=0;
-        boolean check = false;
-        for (int i = 0; i < contacts.length; i++) {
-            if(contacts[i].getName().equals(name)){
-                temp = i;
-                check = true;
-                break;
-            }
-        }
+        findContactUser(name);
         if (check == true) {
             contacts[temp].showContactInfo();
         }else {
@@ -85,15 +83,7 @@ public class SmartPhone {
     void reContacts(){
         System.out.print("수정할 이름을 입력해주세요 : ");
         String name = ScannerUtil.getInputString();
-        int temp=0;
-        boolean check = false;
-        for (int i = 0; i < contacts.length; i++) {
-            if(contacts[i].getName().equals(name)){
-                temp = i;
-                check = true;
-                break;
-            }
-        }
+        findContactUser(name);
         if (check == true) {
             System.out.println("수정할 정보를 선택해주세요");
             System.out.println("1. 전화번호    2. 이메일    3. 주소    4. 생일    5. 그룹");
