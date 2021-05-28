@@ -30,7 +30,9 @@ public class SmartPhone {
     }
 
     void addContacts(){
+        System.out.println("------------------------------------------------------------------------");
         System.out.println("정보를 저장합니다");
+        System.out.println("------------------------------------------------------------------------");
         System.out.print("이름을 입력하여 주세요 : ");
         String name = ScannerUtil.getInputString();
         System.out.print("전화번호를 입력하여주세요 : ");
@@ -43,52 +45,65 @@ public class SmartPhone {
         int birth = ScannerUtil.getInputInteger();
         System.out.print("그룹을 입력하여주세요 : ");
         String group = ScannerUtil.getInputString();
-
+        System.out.println("------------------------------------------------------------------------");
         Contact contact = new Contact(name,phoneNum, email, address, birth, group);
         contacts[count] = contact;
         count++;
+        System.out.println("정상입력되었습니다");
     }
 
     void delContacts(){
+        System.out.println("------------------------------------------------------------------------");
         System.out.print("삭제할 이름을 입력해주세요 : ");
         String name = ScannerUtil.getInputString();
+        System.out.println("------------------------------------------------------------------------");
         findContactUser(name);
         if (check == true) {
             for (int i = temp; i < contacts.length - 1; i++) {
                 contacts[i] = contacts[i + 1];
             }
             count--;
+            System.out.println("삭제되었습니다");
         }
         else {
             System.out.println("삭제하려는 이름을 찾지 못하였습니다.");
+            System.out.println("------------------------------------------------------------------------");
         }
     }
 
     void showListInfo(){
+        System.out.println("------------------------------------------------------------------------");
+        System.out.println("현재 리스트를 보여드립니다");
+        System.out.println("------------------------------------------------------------------------");
         for (int i = 0; i < count; i++) {
             System.out.println((i+1) + " " +contacts[i].getName());
         }
     }
     void findContactInfo(){
+        System.out.println("------------------------------------------------------------------------");
         System.out.print("정보를 볼 이름을 입력해주세요 : ");
         String name = ScannerUtil.getInputString();
+        System.out.println("------------------------------------------------------------------------");
         findContactUser(name);
         if (check == true) {
             contacts[temp].showContactInfo();
         }else {
             System.out.println("수정하려는 이름을 찾지 못하였습니다.");
+            System.out.println("------------------------------------------------------------------------");
         }
     }
 
     void reContacts(){
         System.out.print("수정할 이름을 입력해주세요 : ");
         String name = ScannerUtil.getInputString();
+        System.out.println("------------------------------------------------------------------------");
         findContactUser(name);
         if (check == true) {
             System.out.println("수정할 정보를 선택해주세요");
             System.out.println("1. 전화번호    2. 이메일    3. 주소    4. 생일    5. 그룹");
             System.out.print("선택 : ");
             int menu = ScannerUtil.getInputInteger();
+            System.out.println("------------------------------------------------------------------------");
             switch (menu){
                 case 1 :
                     System.out.println("전화번호 수정");
@@ -129,6 +144,7 @@ public class SmartPhone {
                     break;
             }
         }else {
+            System.out.println("------------------------------------------------------------------------");
             System.out.println("수정하려는 이름을 찾지 못하였습니다.");
         }
 

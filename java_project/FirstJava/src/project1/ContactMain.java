@@ -26,20 +26,24 @@ public class ContactMain {
                     case 5:
                         smartPhone.findContactInfo();
                         break;
+                    case 6 :
+                        System.out.println("------------------------------------------------------------------------");
+                        System.out.println("종료합니다");
+                        break;
                     default:
                         System.out.println("메뉴를 잘못입력하셨습니다.");
                 }
 
             }catch (NumberFormatException e){
-                System.out.println("------------------------------------------------");
-                System.out.println("##### 숫자로 입력하여 주십시오 #####");
+                System.out.println("------------------------------------------------------------------------");
+                System.out.println("##### 잘못된 입력입니다 #####");
             }
         }
     }
     private static void showMenu() {
-        System.out.println("------------------------------------------------");
+        System.out.println("------------------------------------------------------------------------");
         System.out.println("1. 저장    2. 삭제    3. 수정    4. 리스트출력    5. 정보 검색    6. 종료");
-        System.out.println("------------------------------------------------");
+        System.out.println("------------------------------------------------------------------------");
         System.out.print("원하는 기능을 선택해주세요 : ");
     }
 }
