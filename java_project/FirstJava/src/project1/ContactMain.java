@@ -1,16 +1,45 @@
 package project1;
 
+import common.util.ScannerUtil;
+
 public class ContactMain {
     public static void main(String[] args) {
-        Contact contact = new Contact("김용민", "010020200",
-                "naver", "서울", 0304, "백수");
-        System.out.println(contact.getName());
-        System.out.println(contact.getBirth());
-        contact.showContactInfo();
+        SmartPhone smartPhone = new SmartPhone();
+        int button=0;
+        while (!(button==6)) {
+            try {
+                showMenu();
+                button = ScannerUtil.getInputInteger();
+                switch (button) {
+                    case 1:
+                        smartPhone.addContacts();
+                        break;
+                    case 2:
+                        smartPhone.delContacts();
+                        break;
+                    case 3:
+                        smartPhone.reContacts();
+                        break;
+                    case 4:
+                        smartPhone.showListInfo();
+                        break;
+                    case 5:
+                        smartPhone.findContactInfo();
+                        break;
+                    default:
+                        System.out.println("메뉴를 잘못입력하셨습니다.");
+                }
 
-        contact.setName("김용순");
-        System.out.println(contact.getName());
-        System.out.println(contact.getBirth());
-        contact.showContactInfo();
+            }catch (NumberFormatException e){
+                System.out.println("------------------------------------------------");
+                System.out.println("##### 숫자로 입력하여 주십시오 #####");
+            }
+        }
+    }
+    private static void showMenu() {
+        System.out.println("------------------------------------------------");
+        System.out.println("1. 저장    2. 삭제    3. 수정    4. 리스트출력    5. 정보 검색    6. 종료");
+        System.out.println("------------------------------------------------");
+        System.out.print("원하는 기능을 선택해주세요 : ");
     }
 }
