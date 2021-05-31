@@ -5,6 +5,7 @@ public abstract class CalculatorAbs implements CalculatorInter {
         System.out.println("추상");
     }
     public long add(long n1, long n2){
+        System.out.println("추상");
         return n1+n2;
     }
 }
