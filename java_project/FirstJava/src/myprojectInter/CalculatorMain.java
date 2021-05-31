@@ -8,9 +8,11 @@ interface CalulatorInter {
 }
 
  abstract class CalculatorAbs implements CalulatorInter {
-    String name;
     void showName(){
-        System.out.println(name);
+        System.out.println("추상");
+    }
+    public long add(long n1, long n2){
+        return n1+n2;
     }
  }
 
@@ -36,4 +38,22 @@ public class CalculatorMain implements CalulatorInter{
         return n1/n2;
     }
 
+}
+
+class CalculatorAbMain extends  CalculatorAbs{
+
+    @Override
+    public long substract(long n1, long n2) {
+        return n1-n2;
+    }
+
+    @Override
+    public long multiply(long n1, long n2) {
+        return n1*n2;
+    }
+
+    @Override
+    public double divide(double n1, double n2) {
+        return n1/n2;
+    }
 }
