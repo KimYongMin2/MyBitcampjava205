@@ -1,6 +1,6 @@
 package myprojectInter;
 
-public class CalculatorImp implements CalculatorInter {
+public class CalculatorImpInter implements CalculatorInter {
 
     @Override
     public long add(long n1, long n2) {
