@@ -1,6 +1,6 @@
 package friendInfo;
 
-import java.util.Scanner;
+import common.util.ScannerUtil;
 
 public class FriendInfoHandler {
 
@@ -19,18 +19,16 @@ public class FriendInfoHandler {
     // 사용자로부터 친구의 정보를 입력 받아서 -> 인스턴스를 생성 -> 배열에 저장
     public void addFriend(int choice) { // choice -> 1(고교) or 2(대학)
 
-        Scanner s = new Scanner(System.in);
-
         System.out.println("이름을 입력해주세요 >> ");
-        String name = s.nextLine();
+        String name = ScannerUtil.getInputString();
         System.out.println("전화번호를 입력해주세요 >>");
-        String phoneNumber = s.nextLine();
+        String phoneNumber = ScannerUtil.getInputString();
         System.out.println("주소를 입력해주세요 >>");
-        String address = s.nextLine();
+        String address = ScannerUtil.getInputString();
 
         if (choice == 1) { // 고교 친구
             System.out.println("직업을 입력해주세요 >>");
-            String work = s.nextLine();
+            String work = ScannerUtil.getInputString();
 
             // 인스턴스 생성
             // HeighFriend hFriend = new HeighFriend(name, phoneNumber, address, work);
@@ -43,7 +41,7 @@ public class FriendInfoHandler {
         } else { // 2. 대학친구
 
             System.out.println("전공을 입력해주세요 >>");
-            String major = s.nextLine();
+            String major = ScannerUtil.getInputString();
 
             // 인스턴스 생성
             // UnivFriend uFriend = new UnivFriend(name, phoneNumber, address, major);
