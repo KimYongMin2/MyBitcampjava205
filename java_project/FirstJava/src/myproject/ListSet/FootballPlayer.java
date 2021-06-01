@@ -43,13 +43,17 @@ public class FootballPlayer implements Comparable<FootballPlayer>{
 
     @Override
     public int compareTo(FootballPlayer o) {
-        int result = name.compareTo(o.name);
+        int result = team.compareTo(o.team);
         if(result == 0){
-            if (number > o.number){
-                result = 1;
-            }else {
-                result = -1;
+            result = name.compareTo(o.name);
+            if(result == 0){
+                if (number > o.number){
+                    result = 1;
+                }else {
+                    result = -1;
+                }
             }
+
         }
         return result;
     }
