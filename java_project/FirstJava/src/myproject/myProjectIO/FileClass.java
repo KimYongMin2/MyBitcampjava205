@@ -24,10 +24,14 @@ public class FileClass {
                         fileRead.fileRead();
                         break;
                     case 3:
+                        System.out.println("-----------------------------------------");
                         System.out.println("종료합니다.");
+                        System.out.println("-----------------------------------------");
                         break;
                     default:
+                        System.out.println("-----------------------------------------");
                         System.out.println("메뉴를 잘못입력했습니다");
+                        System.out.println("-----------------------------------------");
                         break;
                 }
             }catch (IOException e){
