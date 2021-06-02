@@ -1,6 +1,8 @@
 package myproject.myProjectIO;
 
-public class FootballPlayer implements Comparable<FootballPlayer>{
+import java.io.Serializable;
+
+public class FootballPlayer implements Comparable<FootballPlayer>, Serializable {
     private String name;
     private int number;
     private String team;
