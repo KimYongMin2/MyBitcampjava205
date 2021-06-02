@@ -26,7 +26,6 @@ public class FileWrite {
         String now = simpleDateFormat.format(cal.getTime());
 
         System.out.println("현재날짜 : " + now);
-        System.out.println("메모를 작성합니다");
         System.out.println("---------------------------------------------------------");
         System.out.print("제목을 입력하여 주세요 : ");
         String title = ScannerUtil.getInputString();
