@@ -50,7 +50,10 @@ public class FileClass {
 
     private static void showMenu() {
         System.out.println("-----------------------------------------");
-        System.out.println("1. 파일 저장     2. 파일 읽기     3. 리스트보기     4. 종료");
+        System.out.println("1. 파일 저장");
+        System.out.println("2. 파일 읽기");
+        System.out.println("3. 리스트보기");
+        System.out.println("4. 종료");
         System.out.println("-----------------------------------------");
     }
 }
