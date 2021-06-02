@@ -6,7 +6,7 @@ import java.io.*;
 public class FileClass {
     public static void main(String[] args) {
         int button = 0;
-        while (!(button==3)) {
+        while (!(button==4)) {
             try {
                 showMenu();
                 button = getButton();
@@ -14,13 +14,17 @@ public class FileClass {
                 switch (button) {
                     case 1:
                         FileWrite fileWrite = new FileWrite();
-                        fileWrite.fileWrite();
+                        fileWrite.fileWriteSave();
                         break;
                     case 2:
                         FileRead fileRead = new FileRead();
-                        fileRead.fileRead();
+                        fileRead.showFileRead();
                         break;
-                    case 3:
+                    case 3 :
+                        FileList fileList = new FileList();
+                        fileList.showFileList();
+                        break;
+                    case 4:
                         System.out.println("-----------------------------------------");
                         System.out.println("종료합니다.");
                         System.out.println("-----------------------------------------");
@@ -46,7 +50,7 @@ public class FileClass {
 
     private static void showMenu() {
         System.out.println("-----------------------------------------");
-        System.out.println("1. 파일 저장     2. 파일 읽기     3. 종료");
+        System.out.println("1. 파일 저장     2. 파일 읽기     3. 리스트보기     4. 종료");
         System.out.println("-----------------------------------------");
     }
 }
