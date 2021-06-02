@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class FileWrite {
-    public void fileWrite() throws IOException {
+    public void fileWriteSave() throws IOException {
         showMyMenu();
 
         System.out.print("저장할 폴더 명을 입력해주세요 : ");
