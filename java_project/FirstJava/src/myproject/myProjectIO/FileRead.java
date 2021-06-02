@@ -14,8 +14,8 @@ public class FileRead {
         String findDirname = ScannerUtil.getInputString();
         File findDir = new File("C:\\Users\\bitcamp\\Documents\\myDir\\" + findDirname);
         if (!findDir.exists()) {
-            System.out.println("파일이 존재하지 않습니다.");
-            System.out.println("종료합니다");
+            System.out.println("-----------------------------------------");
+            System.out.println("폴더가 존재하지 않습니다.");
             return;
         } else {
             System.out.println("파일을 찾습니다");
@@ -23,12 +23,13 @@ public class FileRead {
             String findFilename = ScannerUtil.getInputString();
             File findFile = new File("C:\\Users\\bitcamp\\Documents\\myDir\\" + findDirname + "\\" + findFilename + ".txt");
             if (!findFile.exists()) {
+                System.out.println("-----------------------------------------");
                 System.out.println("파일이 존재하지 않습니다.");
-                System.out.println("종료합니다");
             } else {
                 BufferedReader in = new BufferedReader(new FileReader(findFile));
                 String str = null;
 
+                System.out.println("-----------------------------------------");
                 while (true) {
                     str = in.readLine();
 
