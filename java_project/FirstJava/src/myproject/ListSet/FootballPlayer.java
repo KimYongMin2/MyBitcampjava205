@@ -47,13 +47,8 @@ public class FootballPlayer implements Comparable<FootballPlayer>{
         if(result == 0){
             result = name.compareTo(o.name);
             if(result == 0){
-                if (number > o.number){
-                    result = 1;
-                }else {
-                    result = -1;
-                }
+                result = number - o.number;
             }
-
         }
         return result;
     }
