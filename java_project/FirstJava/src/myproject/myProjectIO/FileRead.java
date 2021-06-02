@@ -5,7 +5,7 @@ import common.util.ScannerUtil;
 import java.io.*;
 
 public class FileRead {
-    public void fileRead() throws IOException {
+    public void showFileRead() throws IOException {
         showMyMenu();
         System.out.println("폴더를 찾습니다");
         System.out.print("찾을 폴더명을 입력하세요 : ");
