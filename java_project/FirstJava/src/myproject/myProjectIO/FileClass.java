@@ -8,11 +8,8 @@ public class FileClass {
         int button = 0;
         while (!(button==3)) {
             try {
-                System.out.println("-----------------------------------------");
-                System.out.println("1. 파일 저장     2. 파일 읽기     3. 종료");
-                System.out.println("-----------------------------------------");
-                System.out.print("원하는 기능을 선택하여 주세요 : ");
-                button = ScannerUtil.getInputInteger();
+                showMenu();
+                button = getButton();
 
                 switch (button) {
                     case 1:
@@ -40,5 +37,16 @@ public class FileClass {
                 System.out.println("숫자로 입력해주세요");
             }
         }
+    }
+
+    private static int getButton() {
+        System.out.print("원하는 기능을 선택하여 주세요 : ");
+        return ScannerUtil.getInputInteger();
+    }
+
+    private static void showMenu() {
+        System.out.println("-----------------------------------------");
+        System.out.println("1. 파일 저장     2. 파일 읽기     3. 종료");
+        System.out.println("-----------------------------------------");
     }
 }
