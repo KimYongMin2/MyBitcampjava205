@@ -10,7 +10,7 @@ public class CountdownThreadWhile extends Thread{
             }
             System.out.println(i);
             try {
-                sleep(10000);
+                sleep(2000);
             } catch (InterruptedException e) {
                 // TODO Auto-generated catch block
                 HighLowGameWhile.playCheck = false;
