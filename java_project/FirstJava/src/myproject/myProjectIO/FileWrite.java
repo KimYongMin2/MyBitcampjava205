@@ -11,21 +11,21 @@ import java.util.Calendar;
 
 public class FileWrite {
     private String now, title, contents, saveDir;
+    private File newDir;
     public void fileWriteSave() throws IOException {
-
+       
         showMyMenu();
-        File newDir = setSaveDirname();
+        setSaveDirname();
         DirExists(newDir);
         setMemoContents();
         saveFile(saveDir, now, title, contents);
 
     }
 
-    private File setSaveDirname() {
+    private void setSaveDirname() {
         System.out.print("저장할 폴더 명을 입력해주세요 : ");
         saveDir = ScannerUtil.getInputString();
-        File newDir = new File("C:\\Users\\bitcamp\\Documents\\myDir\\" + saveDir);
-        return newDir;
+        newDir = new File("C:\\Users\\bitcamp\\Documents\\myDir\\" + saveDir);
     }
 
     private void DirExists(File newDir) {
