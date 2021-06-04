@@ -1,7 +1,7 @@
 package socket;
 
+import common.util.CloseUtil;
 import common.util.ScannerUtil;
-import javafx.scene.transform.Scale;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -27,11 +27,11 @@ public class MessageServer {
             dataOutputStream = new DataOutputStream(socket.getOutputStream());
 
             String str1 = null; //받는
-            String str2 = null; //보내는
+            String str2 = " "; //보내는
 
             while (!str2.equals("exit")) {
                 str1 = dataInputStream.readUTF();
-                System.out.println(str1);
+                System.out.println("Client Message" + str1);
 
                 str2 = ScannerUtil.getInputString();
                 dataOutputStream.writeUTF(str2);
@@ -44,34 +44,38 @@ public class MessageServer {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (dataInputStream != null){
-                try {
-                    dataInputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (dataOutputStream != null){
-                try {
-                    dataOutputStream.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (socket != null){
-                try {
-                    socket.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (serverSocket != null){
-                try {
-                    serverSocket.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
+            CloseUtil.close(serverSocket);
+            CloseUtil.close(socket);
+            CloseUtil.close(dataInputStream);
+            CloseUtil.close(dataOutputStream);
+//            if (dataInputStream != null){
+//                try {
+//                    dataInputStream.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//            if (dataOutputStream != null){
+//                try {
+//                    dataOutputStream.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//            if (socket != null){
+//                try {
+//                    socket.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//            if (serverSocket != null){
+//                try {
+//                    serverSocket.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
 
 
         }
