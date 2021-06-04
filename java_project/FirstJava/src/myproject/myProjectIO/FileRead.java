@@ -5,25 +5,37 @@ import common.util.ScannerUtil;
 import java.io.*;
 
 public class FileRead {
+    private String findDirname, findFilename;
+    private File findDir, findFile;
     public void showFileRead() throws IOException {
+
         showMyMenu();
-        System.out.println("폴더를 찾습니다");
-        System.out.print("찾을 폴더명을 입력하세요 : ");
-        String findDirname = ScannerUtil.getInputString();
-        File findDir = new File("C:\\Users\\bitcamp\\Documents\\myDir\\" + findDirname);
+
+        setFindDirName();
         if (!findDir.exists()) {
             unexistence();
         } else {
-            System.out.println("파일을 찾습니다");
-            System.out.print("찾을 파일명을 입력하세요 : ");
-            String findFilename = ScannerUtil.getInputString();
-            File findFile = new File("C:\\Users\\bitcamp\\Documents\\myDir\\" + findDirname + "\\" + findFilename + ".txt");
+            setFindFileName();
             if (!findFile.exists()) {
                 unexistence();
             } else {
                 showFileContents(findFile);
             }
         }
+    }
+
+    private void setFindFileName() {
+        System.out.println("파일을 찾습니다");
+        System.out.print("찾을 파일명을 입력하세요 : ");
+        findFilename = ScannerUtil.getInputString();
+        findFile = new File("C:\\Users\\bitcamp\\Documents\\myDir\\" + findDirname + "\\" + findFilename + ".txt");
+    }
+
+    private void setFindDirName() {
+        System.out.println("폴더를 찾습니다");
+        System.out.print("찾을 폴더명을 입력하세요 : ");
+        findDirname = ScannerUtil.getInputString();
+        findDir = new File("C:\\Users\\bitcamp\\Documents\\myDir\\" + findDirname);
     }
 
     public void unexistence() {
