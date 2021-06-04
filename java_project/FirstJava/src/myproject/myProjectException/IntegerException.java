@@ -1,6 +1,7 @@
 package myproject.myProjectException;
 
 import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class IntegerException extends Throwable {
@@ -12,6 +13,10 @@ public class IntegerException extends Throwable {
             System.out.println(num);
         }catch (InputMismatchException e){
             System.out.println("숫자로 입력해주세요");
+        }catch (IllegalStateException e){
+            System.out.println("dd");
+        }catch (NoSuchElementException e){
+            System.out.println("dd");
         }
     }
 }
