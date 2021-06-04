@@ -24,11 +24,12 @@ public class MessageClient {
             String str2 = " "; //보내기
 
             while (!str2.equals("exit")){
-                str1 = dataInputStream.readUTF();
-                System.out.println("Server Message : " + str1);
-
                 str2 = ScannerUtil.getInputString();
                 dataOutputStream.writeUTF(str2);
+
+
+                str1 = dataInputStream.readUTF();
+                System.out.println("Server Message : " + str1);
             }
 
 
