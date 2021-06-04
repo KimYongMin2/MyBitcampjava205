@@ -8,42 +8,47 @@ public class FileClass {
         int button = 0;
         while (!(button==5)) {
             try {
+
                 showMenu();
                 button = getButton();
+                fileControl(button);
 
-                switch (button) {
-                    case 1:
-                        FileWrite fileWrite = new FileWrite();
-                        fileWrite.fileWriteSave();
-                        break;
-                    case 2:
-                        FileRead fileRead = new FileRead();
-                        fileRead.showFileRead();
-                        break;
-                    case 3 :
-                        FileList fileList = new FileList();
-                        fileList.showFileList();
-                        break;
-                    case 4 :
-                        FileDelete fileDelete = new FileDelete();
-                        fileDelete.saveFileDelete();
-                        break;
-                    case 5:
-                        System.out.println("-----------------------------------------");
-                        System.out.println("종료합니다.");
-                        System.out.println("-----------------------------------------");
-                        break;
-                    default:
-                        System.out.println("-----------------------------------------");
-                        System.out.println("메뉴를 잘못입력했습니다");
-                        System.out.println("-----------------------------------------");
-                        break;
-                }
             }catch (IOException e){
                 e.printStackTrace();
             }catch (NumberFormatException e){
                 System.out.println("숫자로 입력해주세요");
             }
+        }
+    }
+
+    private static void fileControl(int button) throws IOException {
+        switch (button) {
+            case 1:
+                FileWrite fileWrite = new FileWrite();
+                fileWrite.fileWriteSave();
+                break;
+            case 2:
+                FileRead fileRead = new FileRead();
+                fileRead.showFileRead();
+                break;
+            case 3 :
+                FileList fileList = new FileList();
+                fileList.showFileList();
+                break;
+            case 4 :
+                FileDelete fileDelete = new FileDelete();
+                fileDelete.saveFileDelete();
+                break;
+            case 5:
+                System.out.println("-----------------------------------------");
+                System.out.println("종료합니다.");
+                System.out.println("-----------------------------------------");
+                break;
+            default:
+                System.out.println("-----------------------------------------");
+                System.out.println("메뉴를 잘못입력했습니다");
+                System.out.println("-----------------------------------------");
+                break;
         }
     }
 
