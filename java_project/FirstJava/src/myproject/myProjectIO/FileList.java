@@ -5,21 +5,31 @@ import common.util.ScannerUtil;
 import java.io.File;
 
 public class FileList {
+    private String findDirname;
+    private File findDir, files[];
     public void showFileList() {
         showMyMenu();
-        System.out.println("파일의 리스트를 보여줍니다");
-        System.out.print("보고싶은 폴더를 입력하세요 : ");
-        String findDirname = ScannerUtil.getInputString();
-        System.out.println("-----------------------------------------");
-        File findDir = new File("C:\\Users\\bitcamp\\Documents\\myDir\\" + findDirname);
+        setFindDirName();
         if (!findDir.exists()) {
             unexistence();
         } else {
-            File files[] = findDir.listFiles();
-            for (int i = 0; i < files.length; i++) {
-                System.out.println("file: " + files[i].getName());
-            }
+            showAllFileList();
         }
+    }
+
+    private void showAllFileList() {
+        System.out.println("-----------------------------------------");
+        files = findDir.listFiles();
+        for (int i = 0; i < files.length; i++) {
+            System.out.println("file: " + files[i].getName());
+        }
+    }
+
+    private void setFindDirName() {
+        System.out.println("파일의 리스트를 보여줍니다");
+        System.out.print("보고싶은 폴더를 입력하세요 : ");
+        findDirname = ScannerUtil.getInputString();
+        findDir = new File("C:\\Users\\bitcamp\\Documents\\myDir\\" + findDirname);
     }
 
     public void showMyMenu() {
