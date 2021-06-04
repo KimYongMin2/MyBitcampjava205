@@ -23,7 +23,7 @@ public class HighLowGameWhile {
                         answerCheck = false;
                         int comAnswer = (int) (Math.random() * 100);
                         System.out.println("랜덤 숫자가 생성되었습니다.");
-                  ;
+
                         CountdownThreadWhile countdownThreadWhile = new CountdownThreadWhile();
                         countdownThreadWhile.start();
                         while (!HighLowGameWhile.answerCheck) {
