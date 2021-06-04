@@ -1,44 +1,60 @@
 package socket;
 
 import common.util.CloseUtil;
-import common.util.ScannerUtil;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.Scanner;
 
 public class MessageClient {
+
     public static void main(String[] args) {
+
         Socket socket = null;
 
-        DataInputStream dataInputStream = null;
-        DataOutputStream dataOutputStream = null;
+        DataInputStream din = null;
+        DataOutputStream dout = null;
+
         try {
             socket = new Socket("localhost", 8888);
 
-            dataInputStream = new DataInputStream(socket.getInputStream());
-            dataOutputStream = new DataOutputStream(socket.getOutputStream());
+            din = new DataInputStream(socket.getInputStream());
+            dout = new DataOutputStream(socket.getOutputStream());
 
-            String str1 = null; //받기
-            String str2 = " "; //보내기
+            Scanner sc = new Scanner(System.in);
 
-            while (!str2.equals("exit")){
-                str2 = ScannerUtil.getInputString();
-                dataOutputStream.writeUTF(str2);
+            String str1 = null; // 받는 데이터
+            String str2 = ""; // 보내는 데이터
+
+            while(!str2.equals("exit")) {
 
 
-                str1 = dataInputStream.readUTF();
+                // 데이터 전송
+                str2 = sc.nextLine();
+                dout.writeUTF(str2);
+
+
+                str1 = din.readUTF();
                 System.out.println("Server Message : " + str1);
+
+
+
+
+
             }
+
+
 
 
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
+
             CloseUtil.close(socket);
-            CloseUtil.close(dataInputStream);
-            CloseUtil.close(dataOutputStream);
         }
+
     }
+
 }
