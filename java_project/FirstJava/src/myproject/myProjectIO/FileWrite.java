@@ -10,28 +10,39 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class FileWrite {
+    private String now, title, contents, saveDir;
     public void fileWriteSave() throws IOException {
+
         showMyMenu();
-
-        System.out.print("저장할 폴더 명을 입력해주세요 : ");
-        String saveDir = ScannerUtil.getInputString();
-        File newDir = new File("C:\\Users\\bitcamp\\Documents\\myDir\\" + saveDir);
-        if (!newDir.exists()) {
-            newDir.mkdir();
-        }
-
-        String now = calenderNowData();
-        System.out.println("현재날짜 : " + now);
-        System.out.println("---------------------------------------------------------");
-        System.out.print("제목을 입력하여 주세요 : ");
-        String title = ScannerUtil.getInputString();
-        System.out.print("1줄 내용을 입력하여 주세요 : ");
-        String contents = ScannerUtil.getInputString();
-        
+        File newDir = setSaveDirname();
+        DirExists(newDir);
+        setMemoContents();
         saveFile(saveDir, now, title, contents);
 
     }
 
+    private File setSaveDirname() {
+        System.out.print("저장할 폴더 명을 입력해주세요 : ");
+        saveDir = ScannerUtil.getInputString();
+        File newDir = new File("C:\\Users\\bitcamp\\Documents\\myDir\\" + saveDir);
+        return newDir;
+    }
+
+    private void DirExists(File newDir) {
+        if (!newDir.exists()) {
+            newDir.mkdir();
+        }
+    }
+
+    public void setMemoContents(){
+        now = calenderNowData();
+        System.out.println("현재날짜 : " + now);
+        System.out.println("---------------------------------------------------------");
+        System.out.print("제목을 입력하여 주세요 : ");
+        title = ScannerUtil.getInputString();
+        System.out.print("1줄 내용을 입력하여 주세요 : ");
+        contents = ScannerUtil.getInputString();
+    }
     public void saveFile(String saveDir, String now, String title, String contents) throws IOException {
         System.out.println("---------------------------------------------------------");
         System.out.println("메모를 작성합니다");
