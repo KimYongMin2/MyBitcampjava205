@@ -30,6 +30,16 @@ public class FootballPlayerFile {
         for (FootballPlayer footballPlayer : list1) {
             System.out.println(footballPlayer);
         }
+        System.out.println("---------------------------------------");
+
+        for (FootballPlayer footballPlayer : list1) {
+            list.add(footballPlayer);
+        }
+        System.out.println("---------------------------------------");
+        for (FootballPlayer footballPlayer : list) {
+            System.out.println(footballPlayer);
+
+        }
     }
 
     private static void setListNewObject(ArrayList<FootballPlayer> list) {
@@ -38,5 +48,6 @@ public class FootballPlayerFile {
         list.add(new FootballPlayer("김용민",3,"한국", 26));
         list.add(new FootballPlayer("김용순",4,"한국", 27));
         list.add(new FootballPlayer("김개똥",5,"한국", 24));
+        list.add(new FootballPlayer("홍길동",1,"한국", 2000));
     }
 }
