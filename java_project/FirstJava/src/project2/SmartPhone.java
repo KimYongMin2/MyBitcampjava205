@@ -70,6 +70,7 @@ public class SmartPhone {
         }
         System.out.println("저장된 리스트 : " + contacts.size() + "명");
     }
+
     void findContactInfo(){
         lineDividing();
         System.out.print("정보를 볼 이름을 입력해주세요 : ");
