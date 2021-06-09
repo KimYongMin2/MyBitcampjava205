@@ -1,6 +1,7 @@
 package project3;
 
 import common.util.ScannerUtil;
+import myproject.myProjectException.BadIdInputException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,14 +26,18 @@ public class SmartPhone {
         }
     }
 
-    void addContacts(){
+    void addContacts() throws BadIdInputException {
         lineDividing();
         System.out.println("정보를 저장합니다");
         lineDividing();
         System.out.print("이름을 입력하여 주세요 : ");
         name = ScannerUtil.getInputString();
+        checkNull(name);
+        checkString(name);
         System.out.print("전화번호를 입력하여주세요 : ");
         phoneNum = ScannerUtil.getInputString();
+        checkNull(phoneNum);
+        checkString(phoneNum);
         System.out.print("이메일을 입력하여주세요 : ");
         email = ScannerUtil.getInputString();
         System.out.print("주소를 입력하여주세요 : ");
@@ -117,7 +122,7 @@ public class SmartPhone {
         }
     }
 
-    void reContacts(){
+    void reContacts() throws BadIdInputException {
         boolean checkCom = false;
         System.out.print("수정할 이름을 입력해주세요 : ");
         name = ScannerUtil.getInputString();
@@ -150,6 +155,8 @@ public class SmartPhone {
                     System.out.println("전화번호 수정");
                     System.out.print("수정할 전화번호를 입력해 주세요 : ");
                     String phoneNumber = ScannerUtil.getInputString();
+                    checkNull(phoneNumber);
+                    checkString(phoneNumber);
                     contacts.get(temp).setNumber(phoneNumber);
                     System.out.println("완료되었습니다");
                     break;
@@ -232,6 +239,24 @@ public class SmartPhone {
             System.out.println("수정하려는 이름을 찾지 못하였습니다.");
         }
 
+    }
+
+    void checkString(String str) throws BadIdInputException {
+        for (int i = 0; i < str.length(); i++) {
+            char strToChar = str.charAt(i);
+            if(!((strToChar >= 'a' && strToChar <='z')||(strToChar >= 'A' && strToChar <='Z')||(strToChar>='0'&&strToChar<='9'))){
+                throw new BadIdInputException("영어와 숫자로만 입력해주세요.");
+            }
+        }
+    }
+
+    void checkNull(String str) throws BadIdInputException {
+        for (int i = 0; i < str.length(); i++) {
+            char strToChar = str.charAt(i);
+            if(strToChar == ' '){
+                throw new BadIdInputException("곻백은 입력할 수 없습니다.");
+            }
+        }
     }
 
     void lineDividing(){

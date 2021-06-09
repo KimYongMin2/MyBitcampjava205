@@ -1,6 +1,7 @@
 package project3;
 
 import common.util.ScannerUtil;
+import myproject.myProjectException.BadIdInputException;
 
 public class ContactMain {
     public static void main(String[] args) {
@@ -37,6 +38,8 @@ public class ContactMain {
             }catch (NumberFormatException e){
                 smartPhone.lineDividing();
                 System.out.println("##### 잘못된 입력입니다 #####");
+            }catch (BadIdInputException e){
+                System.out.println(e.getMessage());
             }
         }
     }
