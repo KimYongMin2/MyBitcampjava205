@@ -110,7 +110,7 @@ public class SmartPhone {
         lineDividing();
         findContactUser(name);
         if (check == true) {
-            contacts.get(temp).showContactInfo();
+            contacts.get(temp).showData();
         }else {
             System.out.println("수정하려는 이름을 찾지 못하였습니다.");
             lineDividing();
@@ -125,7 +125,7 @@ public class SmartPhone {
         findContactUser(name);
         if (check == true) {
             System.out.println("수정할 이름의 정보입니다.");
-            contacts.get(temp).showContactInfo();
+            contacts.get(temp).showData();
             lineDividing();
             System.out.println("수정할 정보를 선택해주세요");
             if (contacts.get(temp) instanceof CompanyContact){

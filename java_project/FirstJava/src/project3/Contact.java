@@ -1,6 +1,6 @@
 package project3;
 
-public class Contact {
+public abstract class Contact implements ShowData{
     private String name;
     private String number;
     private String email;
@@ -64,15 +64,4 @@ public class Contact {
         this.birth = birth;
         this.group = group;
     }
-
-    public void showContactInfo(){
-        System.out.println("이름 : " + name);
-        System.out.println("번호 : " + number);
-        System.out.println("이메일 : " + email);
-        System.out.println("주소 : " + address);
-        System.out.println("생일 : " + birth);
-        System.out.println("그룹 : " + group);
-    }
-
-
 }

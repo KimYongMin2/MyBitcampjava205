@@ -36,12 +36,18 @@ public class CompanyContact extends Contact{
         this.dept = dept;
         this.job = job;
     }
+
+
     @Override
-    public void showContactInfo() {
-        super.showContactInfo();
+    public void showData() {
+        System.out.println("이름 : " + super.getName());
+        System.out.println("번호 : " + super.getNumber());
+        System.out.println("이메일 : " + super.getEmail());
+        System.out.println("주소 : " + super.getAddress());
+        System.out.println("생일 : " + super.getBirth());
+        System.out.println("그룹 : " + super.getGroup());
         System.out.println("회사이름 : " + companyName);
         System.out.println("부서이름 : " + dept);
         System.out.println("직급 :" + job);
-
     }
 }
