@@ -111,28 +111,28 @@ public class SmartPhone {
                     System.out.println("이메일 수정");
                     System.out.print("수정할 이메일을 입력해 주세요 : ");
                     String email = ScannerUtil.getInputString();
-                    contacts.get(temp).setNumber(email);
+                    contacts.get(temp).setEmail(email);
                     System.out.println("완료되었습니다");
                     break;
                 case 3 :
                     System.out.println("주소 수정");
                     System.out.print("수정할 주소를 입력해 주세요 : ");
                     String address = ScannerUtil.getInputString();
-                    contacts.get(temp).setNumber(address);
+                    contacts.get(temp).setAddress(address);
                     System.out.println("완료되었습니다");
                     break;
                 case 4 :
                     System.out.println("생일 수정");
                     System.out.print("수정할 생일을 입력해 주세요 : ");
-                    String birth = ScannerUtil.getInputString();
-                    contacts.get(temp).setNumber(birth);
+                    int birth = ScannerUtil.getInputInteger();
+                    contacts.get(temp).setBirth(birth);
                     System.out.println("완료되었습니다");
                     break;
                 case 5 :
                     System.out.println("그룹 수정");
                     System.out.print("수정할 그룹 입력해 주세요 : ");
                     String group = ScannerUtil.getInputString();
-                    contacts.get(temp).setNumber(group);
+                    contacts.get(temp).setGroup(group);
                     System.out.println("완료되었습니다");
                     break;
                 default:
