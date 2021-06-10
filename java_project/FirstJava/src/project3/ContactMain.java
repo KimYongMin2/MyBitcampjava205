@@ -1,7 +1,5 @@
 package project3;
 
-import common.util.ScannerUtil;
-
 import java.io.IOException;
 
 public class ContactMain {
