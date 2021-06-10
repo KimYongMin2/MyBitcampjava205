@@ -39,6 +39,8 @@ public class ContactMain {
                 System.out.println("##### 잘못된 입력입니다 #####");
             }catch (BadIdInputException e){
                 System.out.println(e.getMessage());
+            }catch (StringIndexOutOfBoundsException e){
+                System.out.println("##### 잘못된 입력입니다 #####");
             }
         }
     }

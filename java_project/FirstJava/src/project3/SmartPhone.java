@@ -32,11 +32,13 @@ public class SmartPhone {
         name = ScannerUtil.getInputString();
         checkNull(name);
         checkStringKorEng(name);
-        System.out.print("전화번호를 입력하여주세요 : ");
+        System.out.println("전화번호를 입력하여주세요");
+        System.out.println("000-0000-0000");
+        System.out.print("전화번호 : ");
         phoneNum = ScannerUtil.getInputString();
         checkNull(phoneNum);
-        checkStringNum(phoneNum);
         findSameNum(phoneNum);
+        checkNumberForm(phoneNum);
         System.out.print("이메일을 입력하여주세요 : ");
         email = ScannerUtil.getInputString();
         checkNull(email);
@@ -161,12 +163,13 @@ public class SmartPhone {
             lineDividing();
             switch (menu){
                 case 1 :
-                    System.out.println("전화번호 수정");
-                    System.out.print("수정할 전화번호를 입력해 주세요 : ");
+                    System.out.println("수정할 전화번호를 입력하여주세요");
+                    System.out.println("000-0000-0000");
+                    System.out.print("전화번호 : ");
                     String phoneNumber = ScannerUtil.getInputString();
                     checkNull(phoneNumber);
-                    checkStringNum(phoneNumber);
-                    findSameNum(phoneNum);
+                    checkNumberForm(phoneNumber);
+                    findSameNum(phoneNumber);
                     contacts.get(temp).setNumber(phoneNumber);
                     System.out.println("완료되었습니다");
                     break;
@@ -264,17 +267,8 @@ public class SmartPhone {
     void checkStringKorEng(String str) throws BadIdInputException {
         for (int i = 0; i < str.length(); i++) {
             char strToChar = str.charAt(i);
-            if(!((strToChar >= 'a' && strToChar <='z')||(strToChar >= 'A' && strToChar <='Z')||(strToChar>=0x1100 &&strToChar<=0x11FF))){
+            if(!((strToChar >= 'a' && strToChar <='z')||(strToChar >= 'A' && strToChar <='Z')||(strToChar>='가' &&strToChar<='힣')||(strToChar>='ㄱ' &&strToChar<='ㅎ'))){
                 throw new BadIdInputException("영어와 한글로만 입력해주세요.");
-            }
-        }
-    }
-
-    void checkStringNum(String str) throws BadIdInputException {
-        for (int i = 0; i < str.length(); i++) {
-            char strToChar = str.charAt(i);
-            if(!(strToChar>='0' &&strToChar<='9')){
-                throw new BadIdInputException("숫자로만 입력해주세요.");
             }
         }
     }
@@ -284,6 +278,21 @@ public class SmartPhone {
             char strToChar = str.charAt(i);
             if(strToChar == ' '){
                 throw new BadIdInputException("곻백은 입력할 수 없습니다.");
+            }
+        }
+    }
+
+    void checkNumberForm(String str) throws BadIdInputException ,StringIndexOutOfBoundsException {
+        String numberForm = "000-0000-0000";
+        if(!(numberForm.charAt(3) == str.charAt(3) && numberForm.charAt(8) == str.charAt(8) && str.length() == 13)){
+            throw new BadIdInputException("전화번호 형식이 올바르지 않습니다.");
+        }
+        for (int i = 0; i < str.length(); i++) {
+            char strToChar = str.charAt(i);
+            if(!(i == 3 || i == 8)) {
+                if (!(strToChar >= '0' && strToChar <= '9')) {
+                    throw new BadIdInputException("숫자로만 입력해주세요.");
+                }
             }
         }
     }
