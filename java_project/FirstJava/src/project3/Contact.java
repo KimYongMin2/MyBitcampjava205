@@ -67,3 +67,4 @@ public abstract class Contact implements ShowData, Serializable {
         this.group = group;
     }
 }
+
