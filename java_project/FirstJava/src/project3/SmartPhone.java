@@ -339,5 +339,4 @@ public class SmartPhone {
         ArrayList<Contact> contactsRead = (ArrayList<Contact>) in.readObject();
         contacts = contactsRead;
     }
-
 }
