@@ -3,7 +3,7 @@ package project4;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InputSet {
+public class ContactHandler {
     private String name, number, email, address, group, birth;
     private String companyName, dept, job, customerName, item;
     private int temp=0;
@@ -56,10 +56,6 @@ public class InputSet {
 
     public int getTemp() {
         return temp;
-    }
-
-    public boolean isCheck() {
-        return check;
     }
 
     public List<Contact> getContacts() {
@@ -201,4 +197,5 @@ public class InputSet {
             throw new BadIdInputException("같은 전화번호가 있습니다.");
         }
     }
+
 }
