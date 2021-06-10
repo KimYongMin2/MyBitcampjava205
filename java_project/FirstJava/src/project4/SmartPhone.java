@@ -104,18 +104,42 @@ public class SmartPhone {
             }
             lineDividing();
             switch (menu) {
-                case 1 -> reNumber();
-                case 2 -> reEmail();
-                case 3 -> reAddress();
-                case 4 -> reBirth();
-                case 5 -> reGroup();
-                case 6 -> reComName();
-                case 7 -> reDept();
-                case 8 -> reJobCom();
-                case 9 -> reCustomerName();
-                case 10 -> reItem();
-                case 11 -> reJobCus();
-                default -> System.out.println("잘못 입력하였습니다.");
+                case 1:
+                    reNumber();
+                    break;
+                case 2:
+                    reEmail();
+                    break;
+                case 3:
+                    reAddress();
+                    break;
+                case 4:
+                    reBirth();
+                    break;
+                case 5:
+                    reGroup();
+                    break;
+                case 6:
+                    reComName();
+                    break;
+                case 7:
+                    reDept();
+                    break;
+                case 8:
+                    reJobCom();
+                    break;
+                case 9:
+                    reCustomerName();
+                    break;
+                case 10:
+                    reItem();
+                    break;
+                case 11:
+                    reJobCus();
+                    break;
+                default:
+                    System.out.println("잘못 입력하였습니다.");
+                    break;
             }
         }else {
             lineDividing();
