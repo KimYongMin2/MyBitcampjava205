@@ -29,7 +29,7 @@ public class CustomerContact extends Contact{
         this.job = job;
     }
 
-    public CustomerContact(String name, String number, String email, String address, int birth, String group,
+    public CustomerContact(String name, String number, String email, String address, String birth, String group,
                            String customerComName, String item, String job) {
         super(name, number, email, address, birth, group);
         this.customerComName = customerComName;
@@ -39,6 +39,7 @@ public class CustomerContact extends Contact{
 
     @Override
     public void showData() {
+        System.out.println("-- Customer --");
         System.out.println("이름 : " + super.getName());
         System.out.println("번호 : " + super.getNumber());
         System.out.println("이메일 : " + super.getEmail());

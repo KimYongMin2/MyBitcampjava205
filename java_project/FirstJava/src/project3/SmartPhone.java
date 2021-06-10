@@ -6,9 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SmartPhone {
-    String name, phoneNum, email, address, group;
+    String name, phoneNum, email, address, group, birth;
     String companyName, dept, job, customerName, item;
-    int birth;
     int temp=0;
     boolean check = false;
     List<Contact> contacts = new ArrayList<>();
@@ -40,12 +39,16 @@ public class SmartPhone {
         findSameNum(phoneNum);
         System.out.print("이메일을 입력하여주세요 : ");
         email = ScannerUtil.getInputString();
+        checkNull(email);
         System.out.print("주소를 입력하여주세요 : ");
         address = ScannerUtil.getInputString();
+        checkNull(address);
         System.out.print("생일을 입력하여주세요 : ");
-        birth = ScannerUtil.getInputInteger();
+        birth = ScannerUtil.getInputString();
+        checkNull(birth);
         System.out.print("그룹을 입력하여주세요 : ");
         group = ScannerUtil.getInputString();
+        checkNull(group);
         System.out.println("1. Company     2. Customer");
         System.out.print("해당사항을 선택해 주세요 : ");
         int checkCom = ScannerUtil.getInputInteger();
@@ -53,10 +56,13 @@ public class SmartPhone {
             case 1 :
                 System.out.print("회사이름을 입력해주세요 : ");
                 companyName = ScannerUtil.getInputString();
+                checkNull(companyName);
                 System.out.print("부서이름을 입력해주세요 : ");
                 dept = ScannerUtil.getInputString();
+                checkNull(dept);
                 System.out.print("직급을 입력해주세요 : ");
                 job = ScannerUtil.getInputString();
+                checkNull(job);
                 lineDividing();
                 Contact companyContact = new CompanyContact(name,phoneNum, email, address, birth, group, companyName, dept,job);
                 contacts.add(companyContact);
@@ -65,10 +71,13 @@ public class SmartPhone {
             case 2 :
                 System.out.print("거래처회사이름 입력해주세요 : ");
                 customerName = ScannerUtil.getInputString();
+                checkNull(customerName);
                 System.out.print("거래품목을 입력해주세요 : ");
                 item = ScannerUtil.getInputString();
+                checkNull(item);
                 System.out.print("직급을 입력해주세요 : ");
                 job = ScannerUtil.getInputString();
+                checkNull(job);
                 lineDividing();
                 Contact customerContact = new CustomerContact(name,phoneNum, email, address, birth, group, customerName, item,job);
                 contacts.add(customerContact);
@@ -165,6 +174,7 @@ public class SmartPhone {
                     System.out.println("이메일 수정");
                     System.out.print("수정할 이메일을 입력해 주세요 : ");
                     String email = ScannerUtil.getInputString();
+                    checkNull(email);
                     contacts.get(temp).setEmail(email);
                     System.out.println("완료되었습니다");
                     break;
@@ -172,13 +182,15 @@ public class SmartPhone {
                     System.out.println("주소 수정");
                     System.out.print("수정할 주소를 입력해 주세요 : ");
                     String address = ScannerUtil.getInputString();
+                    checkNull(address);
                     contacts.get(temp).setAddress(address);
                     System.out.println("완료되었습니다");
                     break;
                 case 4 :
                     System.out.println("생일 수정");
                     System.out.print("수정할 생일을 입력해 주세요 : ");
-                    int birth = ScannerUtil.getInputInteger();
+                    String birth = ScannerUtil.getInputString();
+                    checkNull(birth);
                     contacts.get(temp).setBirth(birth);
                     System.out.println("완료되었습니다");
                     break;
@@ -186,6 +198,7 @@ public class SmartPhone {
                     System.out.println("그룹 수정");
                     System.out.print("수정할 그룹 입력해 주세요 : ");
                     String group = ScannerUtil.getInputString();
+                    checkNull(group);
                     contacts.get(temp).setGroup(group);
                     System.out.println("완료되었습니다");
                     break;
@@ -193,6 +206,7 @@ public class SmartPhone {
                     System.out.println("회사이름 수정");
                     System.out.print("수정할 회사이름을 입력해 주세요 : ");
                     String companyName = ScannerUtil.getInputString();
+                    checkNull(companyName);
                     ((CompanyContact) contacts.get(temp)).setCompanyName(companyName);
                     System.out.println("완료되었습니다");
                     break;
@@ -200,6 +214,7 @@ public class SmartPhone {
                     System.out.println("부서이름 수정");
                     System.out.print("수정할 부서이름을 입력해 주세요 : ");
                     String dept = ScannerUtil.getInputString();
+                    checkNull(dept);
                     ((CompanyContact) contacts.get(temp)).setDept(dept);
                     System.out.println("완료되었습니다");
                     break;
@@ -207,6 +222,7 @@ public class SmartPhone {
                     System.out.println("직급 수정");
                     System.out.print("수정할 직급을 입력해 주세요 : ");
                     String job = ScannerUtil.getInputString();
+                    checkNull(job);
                     ((CompanyContact) contacts.get(temp)).setJob(job);
                     System.out.println("완료되었습니다");
                     break;
@@ -214,6 +230,7 @@ public class SmartPhone {
                     System.out.println("거래처회사이름 수정");
                     System.out.print("수정할 거래처회사이름을 입력해 주세요 : ");
                     String customerName = ScannerUtil.getInputString();
+                    checkNull(customerName);
                     ((CustomerContact) contacts.get(temp)).setCustomerComName(customerName);
                     System.out.println("완료되었습니다");
                     break;
@@ -221,6 +238,7 @@ public class SmartPhone {
                     System.out.println("거래품목 수정");
                     System.out.print("수정할 거래품목을 입력해 주세요 : ");
                     String item = ScannerUtil.getInputString();
+                    checkNull(item);
                     ((CustomerContact) contacts.get(temp)).setItem(item);
                     System.out.println("완료되었습니다");
                     break;
@@ -228,6 +246,7 @@ public class SmartPhone {
                     System.out.println("직급 수정");
                     System.out.print("수정할 직급을 입력해 주세요 : ");
                     String job1 = ScannerUtil.getInputString();
+                    checkNull(job1);
                     ((CustomerContact) contacts.get(temp)).setJob(job1);
                     System.out.println("완료되었습니다");
                     break;

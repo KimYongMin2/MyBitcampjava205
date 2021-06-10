@@ -29,7 +29,7 @@ public class CompanyContact extends Contact{
         this.job = job;
     }
 
-    public CompanyContact(String name, String number, String email, String address, int birth, String group,
+    public CompanyContact(String name, String number, String email, String address, String birth, String group,
                           String companyName, String dept, String job) {
         super(name, number, email, address, birth, group);
         this.companyName = companyName;
@@ -40,6 +40,7 @@ public class CompanyContact extends Contact{
 
     @Override
     public void showData() {
+        System.out.println("-- Company --");
         System.out.println("이름 : " + super.getName());
         System.out.println("번호 : " + super.getNumber());
         System.out.println("이메일 : " + super.getEmail());

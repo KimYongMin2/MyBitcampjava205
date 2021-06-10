@@ -5,7 +5,7 @@ public abstract class Contact implements ShowData{
     private String number;
     private String email;
     private String address;
-    private int birth;
+    private String birth;
     private String group;
 
     public String getName() {
@@ -40,11 +40,11 @@ public abstract class Contact implements ShowData{
         this.address = address;
     }
 
-    public int getBirth() {
+    public String getBirth() {
         return birth;
     }
 
-    public void setBirth(int birth) {
+    public void setBirth(String birth) {
         this.birth = birth;
     }
 
@@ -56,7 +56,7 @@ public abstract class Contact implements ShowData{
         this.group = group;
     }
 
-    public Contact(String name, String number, String email, String address, int birth, String group) {
+    public Contact(String name, String number, String email, String address, String birth, String group) {
         this.name = name;
         this.number = number;
         this.email = email;
