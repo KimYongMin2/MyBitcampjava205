@@ -30,6 +30,10 @@ public class ContactRead extends Thread{
 
     @Override
     public void run() {
+        contactReadFile();
+    }
+    
+    public synchronized void contactReadFile(){
         ObjectInputStream in;
         try {
             in = new ObjectInputStream(new FileInputStream(file));

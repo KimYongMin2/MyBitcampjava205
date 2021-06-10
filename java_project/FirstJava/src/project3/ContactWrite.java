@@ -16,6 +16,10 @@ public class ContactWrite extends Thread{
 
     @Override
     public void run() {
+        contactSave();
+    }
+
+    public synchronized void contactSave(){
         ObjectOutputStream out;
         try {
             out = new ObjectOutputStream(new FileOutputStream(file));
