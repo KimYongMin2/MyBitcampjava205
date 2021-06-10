@@ -319,22 +319,25 @@ public class SmartPhone {
         System.out.println("------------------------------------------------------------------------");
     }
 
-    void fileSave() {
+    void fileSave() throws InterruptedException {
         lineDividing();
         System.out.println("파일로 저장합니다");
         File file = new File("C:\\Users\\bitcamp\\Documents\\MyBitcampjava205" +
                 "\\material\\contact\\contact.txt");
         ContactWrite contactWrite = new ContactWrite(contacts, file);
         contactWrite.start();
+        contactWrite.join();
     }
 
-    void fileRead() throws IOException, ClassNotFoundException {
+    void fileRead() throws IOException, ClassNotFoundException, InterruptedException {
         lineDividing();
         System.out.println("파일을 불러옵니다");
         File file = new File("C:\\Users\\bitcamp\\Documents\\MyBitcampjava205" +
                 "\\material\\contact\\contact.txt");
         ContactRead contactRead = new ContactRead(contacts, file);
         contactRead.start();
+        contactRead.join();
+        contacts = contactRead.getContacts();
 
     }
 }

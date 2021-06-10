@@ -7,8 +7,8 @@ import java.io.ObjectOutputStream;
 import java.util.*;
 
 public class ContactWrite extends Thread{
-    File file;
-    List<Contact> contacts;
+    private File file;
+    private List<Contact> contacts;
     public ContactWrite(List<Contact> contacts, File file){
         this.file = file;
         this.contacts = contacts;

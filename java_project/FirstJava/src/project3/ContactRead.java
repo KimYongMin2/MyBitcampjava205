@@ -4,8 +4,25 @@ import java.io.*;
 import java.util.*;
 
 public class ContactRead extends Thread{
-    File file;
-    List<Contact> contacts;
+    private File file;
+    private List<Contact> contacts;
+
+    public File getFile() {
+        return file;
+    }
+
+    public void setFile(File file) {
+        this.file = file;
+    }
+
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
+    }
+
     public ContactRead(List<Contact> contacts, File file){
         this.file = file;
         this.contacts = contacts;
@@ -22,6 +39,6 @@ public class ContactRead extends Thread{
             e.printStackTrace();
         }
 
-        System.out.println("파일 저장 완료");
+        System.out.println("파일 불러오기 완료");
     }
 }

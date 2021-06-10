@@ -53,6 +53,8 @@ public class ContactMain {
                 System.out.println("입출력을 실패하였습니다.");
             } catch (ClassNotFoundException e) {
                 System.out.println("파일을 찾을 수 없습니다.");
+            } catch (InterruptedException e) {
+                System.out.println("끝내기 오류");
             }
         }
     }
