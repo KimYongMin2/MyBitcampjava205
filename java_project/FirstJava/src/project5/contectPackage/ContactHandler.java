@@ -1,4 +1,7 @@
-package project5;
+package project5.contectPackage;
+
+import project5.utilAndException.BadIdInputException;
+import project5.utilAndException.ScannerUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -198,77 +201,87 @@ public class ContactHandler {
         }
     }
 
-    void reJobCus(int temp) throws BadIdInputException {
+    public void constructorCustomer() {
+        Contact customerContact = new CompanyContact(name, number, email, address, birth, group, customerName, item, job);
+        contacts.add(customerContact);
+    }
+
+    public void constructorCompany() {
+        Contact companyContact = new CompanyContact(name, number, email, address, birth, group, companyName, dept, job);
+        contacts.add(companyContact);
+    }
+
+    public void reJobCus(int temp) throws BadIdInputException {
         System.out.println("직급 수정");
         setJob();
         ((CustomerContact) contacts.get(temp)).setJob(job);
         System.out.println("완료되었습니다");
     }
 
-    void reItem(int temp) throws BadIdInputException {
+    public void reItem(int temp) throws BadIdInputException {
         System.out.println("거래품목 수정");
         setItem();
         ((CustomerContact) contacts.get(temp)).setItem(item);
         System.out.println("완료되었습니다");
     }
 
-    void reCustomerName(int temp) throws BadIdInputException {
+    public void reCustomerName(int temp) throws BadIdInputException {
         System.out.println("거래처회사이름 수정");
         setCustomerName();
         ((CustomerContact) contacts.get(temp)).setCustomerComName(customerName);
         System.out.println("완료되었습니다");
     }
 
-    void reJobCom(int temp) throws BadIdInputException {
+    public void reJobCom(int temp) throws BadIdInputException {
         System.out.println("직급 수정");
         setJob();
         ((CompanyContact) contacts.get(temp)).setJob(job);
         System.out.println("완료되었습니다");
     }
 
-    void reDept(int temp) throws BadIdInputException {
+    public void reDept(int temp) throws BadIdInputException {
         System.out.println("부서이름 수정");
         setDept();
         ((CompanyContact) contacts.get(temp)).setDept(dept);
         System.out.println("완료되었습니다");
     }
 
-    void reComName(int temp) throws BadIdInputException {
+    public void reComName(int temp) throws BadIdInputException {
         System.out.println("회사이름 수정");
         setComName();
         ((CompanyContact) contacts.get(temp)).setCompanyName(companyName);
         System.out.println("완료되었습니다");
     }
 
-    void reGroup(int temp) throws BadIdInputException {
+    public void reGroup(int temp) throws BadIdInputException {
         System.out.println("그룹 수정");
         setGroup();
         contacts.get(temp).setGroup(group);
         System.out.println("완료되었습니다");
     }
 
-    void reBirth(int temp) throws BadIdInputException {
+    public void reBirth(int temp) throws BadIdInputException {
         System.out.println("생일 수정");
         setBirth();
         contacts.get(temp).setBirth(birth);
         System.out.println("완료되었습니다");
     }
 
-    void reAddress(int temp) throws BadIdInputException {
+    public void reAddress(int temp) throws BadIdInputException {
         System.out.println("주소 수정");
         setAddress();
         contacts.get(temp).setAddress(address);
         System.out.println("완료되었습니다");
     }
 
-    void reEmail(int temp) throws BadIdInputException {
+    public void reEmail(int temp) throws BadIdInputException {
         System.out.println("Email 수정");
         setEmail();
         contacts.get(temp).setEmail(email);
         System.out.println("완료되었습니다");
     }
 
-    void reNumber(int temp) throws BadIdInputException {
+    public void reNumber(int temp) throws BadIdInputException {
         System.out.println("번호 수정");
         setNumber();
         contacts.get(temp).setNumber(number);

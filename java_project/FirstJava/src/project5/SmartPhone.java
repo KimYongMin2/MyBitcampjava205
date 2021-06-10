@@ -1,5 +1,15 @@
 package project5;
 
+import project5.UserInterface.ShowMenu;
+import project5.contectPackage.CompanyContact;
+import project5.contectPackage.ContactHandler;
+import project5.fileHandler.ContactRead;
+import project5.fileHandler.ContactWrite;
+import project5.utilAndException.BadIdInputException;
+import project5.utilAndException.ScannerUtil;
+import project5.utilAndException.Line;
+
+
 import java.io.File;
 import java.io.IOException;
 
@@ -11,22 +21,23 @@ public class SmartPhone {
     ContactHandler contactHandler = new ContactHandler();
 
     void addContacts() throws BadIdInputException {
-        lineDividing();
+        Line.lineDividing();
         System.out.println("정보를 저장합니다");
+        Line.lineDividing();
         setContactInfo();
         ShowMenu.showComOrCus();
         int checkCom = ScannerUtil.getInputInteger();
         switch (checkCom){
             case 1 :
                 setCompanyInfo();
-                lineDividing();
-                constructorCompany();
+                Line.lineDividing();
+                contactHandler.constructorCompany();
                 System.out.println("정상입력되었습니다");
                 break;
             case 2 :
                 setCustomerInfo();
-                lineDividing();
-                constructorCustomer();
+                Line.lineDividing();
+                contactHandler.constructorCustomer();
                 System.out.println("정상입력되었습니다");
                 break;
             default:
@@ -38,10 +49,10 @@ public class SmartPhone {
     }
 
     void delContacts(){
-        lineDividing();
+        Line.lineDividing();
         System.out.print("삭제할 이름을 입력해주세요 : ");
         name = ScannerUtil.getInputString();
-        lineDividing();
+        Line.lineDividing();
         findContactUser(name);
         if (check == true) {
             contactHandler.getContacts().remove(temp);
@@ -49,14 +60,14 @@ public class SmartPhone {
         }
         else {
             System.out.println("삭제하려는 이름을 찾지 못하였습니다.");
-            lineDividing();
+            Line.lineDividing();
         }
     }
 
     void showListInfo(){
-        lineDividing();
+        Line.lineDividing();
         System.out.println("현재 리스트를 보여드립니다");
-        lineDividing();
+        Line.lineDividing();
         for (int i = 0; i < contactHandler.getContacts().size(); i++) {
             System.out.println((i+1) + " " + contactHandler.getContacts().get(i).getName());
         }
@@ -64,16 +75,16 @@ public class SmartPhone {
     }
 
     void findContactInfo(){
-        lineDividing();
+        Line.lineDividing();
         System.out.print("정보를 볼 이름을 입력해주세요 : ");
         name = ScannerUtil.getInputString();
-        lineDividing();
+        Line.lineDividing();
         findContactUser(name);
         if (check == true) {
             contactHandler.getContacts().get(temp).showData();
         }else {
             System.out.println("수정하려는 이름을 찾지 못하였습니다.");
-            lineDividing();
+            Line.lineDividing();
         }
     }
 
@@ -81,12 +92,12 @@ public class SmartPhone {
         boolean checkComOrCus;
         System.out.print("수정할 이름을 입력해주세요 : ");
         name = ScannerUtil.getInputString();
-        lineDividing();
+        Line.lineDividing();
         findContactUser(name);
         if (check == true) {
             System.out.println("수정할 이름의 정보입니다.");
             contactHandler.getContacts().get(temp).showData();
-            lineDividing();
+            Line.lineDividing();
             System.out.println("수정할 정보를 선택해주세요");
             if (contactHandler.getContacts().get(temp) instanceof CompanyContact){
                 ShowMenu.showComMenu();
@@ -102,7 +113,7 @@ public class SmartPhone {
                     menu += 3;
                 }
             }
-            lineDividing();
+            Line.lineDividing();
             switch (menu) {
                 case 1:
                     contactHandler.reNumber(temp);
@@ -142,14 +153,13 @@ public class SmartPhone {
                     break;
             }
         }else {
-            lineDividing();
+            Line.lineDividing();
             System.out.println("수정하려는 이름을 찾지 못하였습니다.");
         }
-
     }
 
     void fileSave() throws InterruptedException {
-        lineDividing();
+        Line.lineDividing();
         System.out.println("파일로 저장합니다");
         File file = new File("C:\\Users\\bitcamp\\Documents\\MyBitcampjava205" +
                 "\\material\\contact\\contact.txt");
@@ -159,7 +169,7 @@ public class SmartPhone {
     }
 
     void fileRead() throws IOException, ClassNotFoundException, InterruptedException {
-        lineDividing();
+        Line.lineDividing();
         System.out.println("파일을 불러옵니다");
         File file = new File("C:\\Users\\bitcamp\\Documents\\MyBitcampjava205" +
                 "\\material\\contact\\contact.txt");
@@ -182,21 +192,6 @@ public class SmartPhone {
         }
     }
 
-
-    private void constructorCustomer() {
-        Contact customerContact = new CompanyContact(contactHandler.getName(), contactHandler.getNumber(),
-                contactHandler.getEmail(), contactHandler.getAddress(), contactHandler.getBirth(),
-                contactHandler.getGroup(), contactHandler.getCustomerName(), contactHandler.getItem(), contactHandler.getJob());
-        contactHandler.getContacts().add(customerContact);
-    }
-
-    private void constructorCompany() {
-        Contact companyContact = new CompanyContact(contactHandler.getName(), contactHandler.getNumber(),
-                contactHandler.getEmail(), contactHandler.getAddress(), contactHandler.getBirth(),
-                contactHandler.getGroup(), contactHandler.getCompanyName(), contactHandler.getDept(), contactHandler.getJob());
-        contactHandler.getContacts().add(companyContact);
-    }
-
     private void setCustomerInfo() throws BadIdInputException {
         contactHandler.setCustomerName();
         contactHandler.setItem();
@@ -210,7 +205,6 @@ public class SmartPhone {
     }
 
     private void setContactInfo() throws BadIdInputException {
-        lineDividing();
         contactHandler.setName();
         contactHandler.setNumber();
         contactHandler.setEmail();
@@ -219,7 +213,4 @@ public class SmartPhone {
         contactHandler.setGroup();
     }
 
-    void lineDividing(){
-        System.out.println("------------------------------------------------------------------------");
-    }
 }

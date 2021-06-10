@@ -1,8 +1,13 @@
 package project5;
 
+import project5.UserInterface.ShowMenu;
+import project5.utilAndException.BadIdInputException;
+import project5.utilAndException.ScannerUtil;
+import project5.utilAndException.Line;
+
 import java.io.IOException;
 
-public class ContactMain {
+public class Main {
     public static void main(String[] args) {
         SmartPhone smartPhone = new SmartPhone();
         int button=0;
@@ -33,7 +38,7 @@ public class ContactMain {
                         smartPhone.fileRead();
                         break;
                     case 8 :
-                        smartPhone.lineDividing();
+                        Line.lineDividing();
                         System.out.println("종료합니다");
                         break;
                     default:
@@ -41,7 +46,7 @@ public class ContactMain {
                 }
 
             }catch (NumberFormatException e){
-                smartPhone.lineDividing();
+                Line.lineDividing();
                 System.out.println("##### 잘못된 입력입니다 #####");
             }catch (BadIdInputException e){
                 System.out.println(e.getMessage());
