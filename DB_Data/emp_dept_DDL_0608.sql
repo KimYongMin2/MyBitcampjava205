@@ -1,23 +1,23 @@
 drop table emp; 
 drop table dept; 
 
-create table dept(                        -- dept table »ý¼º
-  deptno number,                          -- ºÎ¼­¹øÈ£
-  dname  varchar2(14),                    -- ºÎ¼­¸í
-  loc    varchar2(13),                    -- ºÎ¼­À§Ä¡
-  constraint pk_dept primary key (deptno) -- deptno·Î pk¼³Á¤
+create table dept(                        -- dept table ï¿½ï¿½ï¿½ï¿½
+  deptno number,                          -- ï¿½Î¼ï¿½ï¿½ï¿½È£
+  dname  varchar2(14),                    -- ï¿½Î¼ï¿½ï¿½ï¿½
+  loc    varchar2(13),                    -- ï¿½Î¼ï¿½ï¿½ï¿½Ä¡
+  constraint pk_dept primary key (deptno) -- deptnoï¿½ï¿½ pkï¿½ï¿½ï¿½ï¿½
 );
 
-create table emp(                         -- emp table »ý¼º
-  empno    number,                        -- Á÷¿ø¹øÈ£
-  ename    varchar2(10),                  -- Á÷¿ø¸í
-  job      varchar2(9),                   -- Á÷Ã¥
-  mgr      number(4),                     -- ´ã´ç¸Å´ÏÀú
-  hiredate date,                          -- ÀÔ»çÀÏ
-  sal      number(7),                     -- ¿ù±Þ
-  comm     number(7),                     -- º¸³Ê½º
-  deptno   number,                        -- ºÎ¼­¹øÈ£
-  constraint pk_emp primary key (empno)   -- empno·Î pk¼³Á¤
+create table emp(                         -- emp table ï¿½ï¿½ï¿½ï¿½
+  empno    number,                        -- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È£
+  ename    varchar2(10),                  -- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  job      varchar2(9),                   -- ï¿½ï¿½Ã¥
+  mgr      number(4),                     -- ï¿½ï¿½ï¿½Å´ï¿½ï¿½ï¿½
+  hiredate date,                          -- ï¿½Ô»ï¿½ï¿½ï¿½
+  sal      number(7),                     -- ï¿½ï¿½ï¿½ï¿½
+  comm     number(7),                     -- ï¿½ï¿½ï¿½Ê½ï¿½
+  deptno   number,                        -- ï¿½Î¼ï¿½ï¿½ï¿½È£
+  constraint pk_emp primary key (empno)   -- empnoï¿½ï¿½ pkï¿½ï¿½ï¿½ï¿½
 );
 
 -- DEPT DML
@@ -40,7 +40,7 @@ insert into emp values( 7499, 'ALLEN', 'SALESMAN', 7698, to_date('20-2-1981','dd
 insert into emp values( 7521, 'WARD', 'SALESMAN', 7698, to_date('22-2-1981','dd-mm-yyyy'), 1250, 500, 30);
 insert into emp values( 7654, 'MARTIN', 'SALESMAN', 7698, to_date('28-9-1981','dd-mm-yyyy'), 1250, 1400, 30);
 insert into emp values( 7844, 'TURNER', 'SALESMAN', 7698, to_date('8-9-1981','mm-dd-yyyy'), 1500, 0, 30);
-insert into emp values( 7876, 'ADAMS', 'CLERK', 7788, to_date('13-7-87', 'dd-mm-yy') - 51, 1100, null, 20);
+insert into emp values( 7876, 'ADAMS', 'CLERK', 7788, to_date('13-7-1987', 'dd-mm-yyyy') - 51, 1100, null, 20);
 insert into emp values( 7900, 'JAMES', 'CLERK', 7698, to_date('3-12-1981','mm-dd-yyyy'), 950, null, 30);
 insert into emp values( 7934, 'MILLER', 'CLERK', 7782, to_date('2003-1-23','yyyy-mm-dd'), 1300, null, 10);
 
