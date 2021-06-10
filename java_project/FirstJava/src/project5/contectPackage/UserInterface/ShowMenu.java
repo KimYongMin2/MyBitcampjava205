@@ -1,4 +1,4 @@
-package project5.UserInterface;
+package project5.contectPackage.UserInterface;
 
 public class ShowMenu {
     public static void showComOrCus() {

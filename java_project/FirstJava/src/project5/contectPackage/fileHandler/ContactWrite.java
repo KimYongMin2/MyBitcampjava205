@@ -1,6 +1,6 @@
-package project5.fileHandler;
+package project5.contectPackage.fileHandler;
 
-import project5.contectPackage.Contact;
+import project5.contectPackage.construct.construct.Contact;
 
 import java.io.File;
 import java.io.FileOutputStream;

@@ -1,10 +1,9 @@
 package project5.contectPackage;
 
-import project5.UserInterface.ShowMenu;
-import project5.contectPackage.CompanyContact;
-import project5.contectPackage.ContactHandler;
-import project5.fileHandler.ContactRead;
-import project5.fileHandler.ContactWrite;
+import project5.contectPackage.UserInterface.ShowMenu;
+import project5.contectPackage.construct.construct.CompanyContact;
+import project5.contectPackage.fileHandler.ContactRead;
+import project5.contectPackage.fileHandler.ContactWrite;
 import project5.utilAndException.BadIdInputException;
 import project5.utilAndException.ScannerUtil;
 import project5.utilAndException.Line;

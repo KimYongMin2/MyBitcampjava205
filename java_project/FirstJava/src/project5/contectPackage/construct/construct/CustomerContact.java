@@ -1,4 +1,4 @@
-package project5.contectPackage;
+package project5.contectPackage.construct.construct;
 
 public class CustomerContact extends Contact {
     private String customerComName;

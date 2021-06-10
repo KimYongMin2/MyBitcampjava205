@@ -1,6 +1,6 @@
 package project5.contectPackage;
 
-import project5.UserInterface.ShowMenu;
+import project5.contectPackage.UserInterface.ShowMenu;
 import project5.utilAndException.BadIdInputException;
 import project5.utilAndException.Line;
 import project5.utilAndException.ScannerUtil;
