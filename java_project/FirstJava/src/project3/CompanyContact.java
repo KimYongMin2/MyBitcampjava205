@@ -52,3 +52,4 @@ public class CompanyContact extends Contact{
         System.out.println("직급 :" + job);
     }
 }
+
