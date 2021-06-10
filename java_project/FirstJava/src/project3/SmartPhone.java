@@ -1,9 +1,8 @@
 package project3;
 
 import common.util.ScannerUtil;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 public class SmartPhone {
     String name, phoneNum, email, address, group, birth;
@@ -66,7 +65,8 @@ public class SmartPhone {
                 job = ScannerUtil.getInputString();
                 checkNull(job);
                 lineDividing();
-                Contact companyContact = new CompanyContact(name,phoneNum, email, address, birth, group, companyName, dept,job);
+                Contact companyContact = new CompanyContact(name,phoneNum, email, address, birth,
+                        group, companyName, dept,job);
                 contacts.add(companyContact);
                 System.out.println("정상입력되었습니다");
                 break;
@@ -81,7 +81,8 @@ public class SmartPhone {
                 job = ScannerUtil.getInputString();
                 checkNull(job);
                 lineDividing();
-                Contact customerContact = new CustomerContact(name,phoneNum, email, address, birth, group, customerName, item,job);
+                Contact customerContact = new CustomerContact(name,phoneNum, email, address, birth,
+                        group, customerName, item,job);
                 contacts.add(customerContact);
                 System.out.println("정상입력되었습니다");
                 break;
@@ -267,7 +268,8 @@ public class SmartPhone {
     void checkStringKorEng(String str) throws BadIdInputException {
         for (int i = 0; i < str.length(); i++) {
             char strToChar = str.charAt(i);
-            if(!((strToChar >= 'a' && strToChar <='z')||(strToChar >= 'A' && strToChar <='Z')||(strToChar>='가' &&strToChar<='힣')||(strToChar>='ㄱ' &&strToChar<='ㅎ'))){
+            if(!((strToChar >= 'a' && strToChar <='z')||(strToChar >= 'A' && strToChar <='Z')
+                    ||(strToChar>='가' &&strToChar<='힣')||(strToChar>='ㄱ' &&strToChar<='ㅎ'))){
                 throw new BadIdInputException("영어와 한글로만 입력해주세요.");
             }
         }
@@ -284,7 +286,8 @@ public class SmartPhone {
 
     void checkNumberForm(String str) throws BadIdInputException ,StringIndexOutOfBoundsException {
         String numberForm = "000-0000-0000";
-        if(!(numberForm.charAt(3) == str.charAt(3) && numberForm.charAt(8) == str.charAt(8) && str.length() == 13)){
+        if(!(numberForm.charAt(3) == str.charAt(3) && numberForm.charAt(8) == str.charAt(8)
+                && str.length() == 13)){
             throw new BadIdInputException("전화번호 형식이 올바르지 않습니다.");
         }
         for (int i = 0; i < str.length(); i++) {
@@ -314,6 +317,25 @@ public class SmartPhone {
 
     void lineDividing(){
         System.out.println("------------------------------------------------------------------------");
+    }
+
+    void fileSave() throws IOException {
+        lineDividing();
+        System.out.println("파일로 저장합니다");
+        File file = new File("C:\\Users\\bitcamp\\Documents\\MyBitcampjava205\\material\\contact\\contact.txt");
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+        out.writeObject(contacts);
+        out.close();
+        System.out.println("파일 저장 완료");
+    }
+
+    void fileRead() throws IOException, ClassNotFoundException {
+        lineDividing();
+        System.out.println("파일을 불러옵니다");
+        File file = new File("C:\\Users\\bitcamp\\Documents\\MyBitcampjava205\\material\\contact\\contact.txt");
+        ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
+        ArrayList<Contact> contactsRead = (ArrayList<Contact>) in.readObject();
+        contacts = contactsRead;
     }
 
 }
