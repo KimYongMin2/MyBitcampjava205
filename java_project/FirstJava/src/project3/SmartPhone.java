@@ -322,7 +322,8 @@ public class SmartPhone {
     void fileSave() throws IOException {
         lineDividing();
         System.out.println("파일로 저장합니다");
-        File file = new File("C:\\Users\\bitcamp\\Documents\\MyBitcampjava205\\material\\contact\\contact.txt");
+        File file = new File("C:\\Users\\bitcamp\\Documents\\MyBitcampjava205" +
+                "\\material\\contact\\contact.txt");
         ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
         out.writeObject(contacts);
         out.close();
@@ -332,7 +333,8 @@ public class SmartPhone {
     void fileRead() throws IOException, ClassNotFoundException {
         lineDividing();
         System.out.println("파일을 불러옵니다");
-        File file = new File("C:\\Users\\bitcamp\\Documents\\MyBitcampjava205\\material\\contact\\contact.txt");
+        File file = new File("C:\\Users\\bitcamp\\Documents\\MyBitcampjava205" +
+                "\\material\\contact\\contact.txt");
         ObjectInputStream in = new ObjectInputStream(new FileInputStream(file));
         ArrayList<Contact> contactsRead = (ArrayList<Contact>) in.readObject();
         contacts = contactsRead;
