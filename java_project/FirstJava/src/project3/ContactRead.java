@@ -32,7 +32,7 @@ public class ContactRead extends Thread{
     public void run() {
         contactReadFile();
     }
-    
+
     public synchronized void contactReadFile(){
         ObjectInputStream in;
         try {
