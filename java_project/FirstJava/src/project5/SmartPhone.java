@@ -79,7 +79,7 @@ public class SmartPhone {
 
     void reContacts() throws BadIdInputException {
         boolean checkComOrCus;
-        System.out.println("수정할 이름을 입력해주세요 : ");
+        System.out.print("수정할 이름을 입력해주세요 : ");
         name = ScannerUtil.getInputString();
         lineDividing();
         findContactUser(name);
@@ -105,37 +105,37 @@ public class SmartPhone {
             lineDividing();
             switch (menu) {
                 case 1:
-                    reNumber();
+                    contactHandler.reNumber(temp);
                     break;
                 case 2:
-                    reEmail();
+                    contactHandler.reEmail(temp);
                     break;
                 case 3:
-                    reAddress();
+                    contactHandler.reAddress(temp);
                     break;
                 case 4:
-                    reBirth();
+                    contactHandler.reBirth(temp);
                     break;
                 case 5:
-                    reGroup();
+                    contactHandler.reGroup(temp);
                     break;
                 case 6:
-                    reComName();
+                    contactHandler.reComName(temp);
                     break;
                 case 7:
-                    reDept();
+                    contactHandler.reDept(temp);
                     break;
                 case 8:
-                    reJobCom();
+                    contactHandler.reJobCom(temp);
                     break;
                 case 9:
-                    reCustomerName();
+                    contactHandler.reCustomerName(temp);
                     break;
                 case 10:
-                    reItem();
+                    contactHandler.reItem(temp);
                     break;
                 case 11:
-                    reJobCus();
+                    contactHandler.reJobCus(temp);
                     break;
                 default:
                     System.out.println("잘못 입력하였습니다.");
@@ -182,82 +182,6 @@ public class SmartPhone {
         }
     }
 
-    private void reJobCus() throws BadIdInputException {
-        System.out.println("직급 수정");
-        contactHandler.setJob();
-        ((CustomerContact) contactHandler.getContacts().get(temp)).setJob(contactHandler.getJob());
-        System.out.println("완료되었습니다");
-    }
-
-    private void reItem() throws BadIdInputException {
-        System.out.println("거래품목 수정");
-        contactHandler.setItem();
-        ((CustomerContact) contactHandler.getContacts().get(temp)).setItem(contactHandler.getItem());
-        System.out.println("완료되었습니다");
-    }
-
-    private void reCustomerName() throws BadIdInputException {
-        System.out.println("거래처회사이름 수정");
-        contactHandler.setCustomerName();
-        ((CustomerContact) contactHandler.getContacts().get(temp)).setCustomerComName(contactHandler.getCustomerName());
-        System.out.println("완료되었습니다");
-    }
-
-    private void reJobCom() throws BadIdInputException {
-        System.out.println("직급 수정");
-        contactHandler.setJob();
-        ((CompanyContact) contactHandler.getContacts().get(temp)).setJob(contactHandler.getJob());
-        System.out.println("완료되었습니다");
-    }
-
-    private void reDept() throws BadIdInputException {
-        System.out.println("부서이름 수정");
-        contactHandler.setDept();
-        ((CompanyContact) contactHandler.getContacts().get(temp)).setDept(contactHandler.getDept());
-        System.out.println("완료되었습니다");
-    }
-
-    private void reComName() throws BadIdInputException {
-        System.out.println("회사이름 수정");
-        contactHandler.setComName();
-        ((CompanyContact) contactHandler.getContacts().get(temp)).setCompanyName(contactHandler.getCompanyName());
-        System.out.println("완료되었습니다");
-    }
-
-    private void reGroup() throws BadIdInputException {
-        System.out.println("그룹 수정");
-        contactHandler.setGroup();
-        contactHandler.getContacts().get(temp).setGroup(contactHandler.getGroup());
-        System.out.println("완료되었습니다");
-    }
-
-    private void reBirth() throws BadIdInputException {
-        System.out.println("생일 수정");
-        contactHandler.setBirth();
-        contactHandler.getContacts().get(temp).setBirth(contactHandler.getBirth());
-        System.out.println("완료되었습니다");
-    }
-
-    private void reAddress() throws BadIdInputException {
-        System.out.println("주소 수정");
-        contactHandler.setAddress();
-        contactHandler.getContacts().get(temp).setAddress(contactHandler.getAddress());
-        System.out.println("완료되었습니다");
-    }
-
-    private void reEmail() throws BadIdInputException {
-        System.out.println("Email 수정");
-        contactHandler.setEmail();
-        contactHandler.getContacts().get(temp).setEmail(contactHandler.getEmail());
-        System.out.println("완료되었습니다");
-    }
-
-    private void reNumber() throws BadIdInputException {
-        System.out.println("번호 수정");
-        contactHandler.setNumber();
-        contactHandler.getContacts().get(temp).setNumber(contactHandler.getNumber());
-        System.out.println("완료되었습니다");
-    }
 
     private void constructorCustomer() {
         Contact customerContact = new CompanyContact(contactHandler.getName(), contactHandler.getNumber(),
