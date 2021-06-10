@@ -1,7 +1,6 @@
 package project3;
 
 import common.util.ScannerUtil;
-import myproject.myProjectException.BadIdInputException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +13,7 @@ public class SmartPhone {
     boolean check = false;
     List<Contact> contacts = new ArrayList<>();
 
-    private void findContactUser(String name) {
+    public void findContactUser(String name) {
         temp=0;
         check = false;
         for (int i = 0; i < contacts.size(); i++) {
@@ -33,11 +32,12 @@ public class SmartPhone {
         System.out.print("이름을 입력하여 주세요 : ");
         name = ScannerUtil.getInputString();
         checkNull(name);
-        checkString(name);
+        checkStringKorEng(name);
         System.out.print("전화번호를 입력하여주세요 : ");
         phoneNum = ScannerUtil.getInputString();
         checkNull(phoneNum);
-        checkString(phoneNum);
+        checkStringNum(phoneNum);
+        findSameNum(phoneNum);
         System.out.print("이메일을 입력하여주세요 : ");
         email = ScannerUtil.getInputString();
         System.out.print("주소를 입력하여주세요 : ");
@@ -156,7 +156,8 @@ public class SmartPhone {
                     System.out.print("수정할 전화번호를 입력해 주세요 : ");
                     String phoneNumber = ScannerUtil.getInputString();
                     checkNull(phoneNumber);
-                    checkString(phoneNumber);
+                    checkStringNum(phoneNumber);
+                    findSameNum(phoneNum);
                     contacts.get(temp).setNumber(phoneNumber);
                     System.out.println("완료되었습니다");
                     break;
@@ -241,11 +242,20 @@ public class SmartPhone {
 
     }
 
-    void checkString(String str) throws BadIdInputException {
+    void checkStringKorEng(String str) throws BadIdInputException {
         for (int i = 0; i < str.length(); i++) {
             char strToChar = str.charAt(i);
-            if(!((strToChar >= 'a' && strToChar <='z')||(strToChar >= 'A' && strToChar <='Z')||(strToChar>='0'&&strToChar<='9'))){
-                throw new BadIdInputException("영어와 숫자로만 입력해주세요.");
+            if(!((strToChar >= 'a' && strToChar <='z')||(strToChar >= 'A' && strToChar <='Z')||(strToChar>=0x1100 &&strToChar<=0x11FF))){
+                throw new BadIdInputException("영어와 한글로만 입력해주세요.");
+            }
+        }
+    }
+
+    void checkStringNum(String str) throws BadIdInputException {
+        for (int i = 0; i < str.length(); i++) {
+            char strToChar = str.charAt(i);
+            if(!(strToChar>='0' &&strToChar<='9')){
+                throw new BadIdInputException("숫자로만 입력해주세요.");
             }
         }
     }
@@ -256,6 +266,21 @@ public class SmartPhone {
             if(strToChar == ' '){
                 throw new BadIdInputException("곻백은 입력할 수 없습니다.");
             }
+        }
+    }
+
+    void findSameNum(String number) throws BadIdInputException {
+        temp=0;
+        check = false;
+        for (int i = 0; i < contacts.size(); i++) {
+            if(contacts.get(i).getNumber().equals(number)){
+                temp = i;
+                check = true;
+                break;
+            }
+        }
+        if(check) {
+            throw new BadIdInputException("같은 전화번호가 있습니다.");
         }
     }
 

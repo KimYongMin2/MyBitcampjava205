@@ -1,7 +1,6 @@
 package project3;
 
 import common.util.ScannerUtil;
-import myproject.myProjectException.BadIdInputException;
 
 public class ContactMain {
     public static void main(String[] args) {
