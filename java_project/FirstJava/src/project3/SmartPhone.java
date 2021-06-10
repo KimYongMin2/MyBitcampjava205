@@ -1,6 +1,5 @@
 package project3;
 
-import common.util.ScannerUtil;
 import java.io.*;
 import java.util.*;
 
