@@ -129,7 +129,7 @@ public class ContactProgram implements Show {
 
     void fileSave() throws InterruptedException {
         showMessage("정보를 파일로 저장합니다");
-        File file = new File("C:\\Users\\bitcamp\\Documents\\MyBitcampjava205" +
+        File file = new File("C:\\Users\\USER\\Documents\\MyBitcampjava205" +
                 "\\material\\contact\\contact.txt");
         ContactWrite contactWrite = new ContactWrite(contactHandler.getContacts(), file);
         contactWrite.start();
@@ -138,7 +138,7 @@ public class ContactProgram implements Show {
 
     void fileRead() throws IOException, ClassNotFoundException, InterruptedException {
         showMessage("저장된 정보를 불러옵니다");
-        File file = new File("C:\\Users\\bitcamp\\Documents\\MyBitcampjava205" +
+        File file = new File("C:\\Users\\USER\\Documents\\MyBitcampjava205" +
                 "\\material\\contact\\contact.txt");
         ContactRead contactRead = new ContactRead(contactHandler.getContacts(), file);
         contactRead.start();
