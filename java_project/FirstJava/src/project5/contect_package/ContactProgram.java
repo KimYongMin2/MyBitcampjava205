@@ -1,9 +1,9 @@
-package project5.contectPackage;
+package project5.contect_package;
 
-import project5.contectPackage.UserInterface.ShowMenu;
-import project5.contectPackage.construct.CompanyContact;
-import project5.contectPackage.fileHandler.ContactRead;
-import project5.contectPackage.fileHandler.ContactWrite;
+import project5.contect_package.show_contact.Show;
+import project5.contect_package.construct_contact.CompanyContact;
+import project5.contect_package.file_IO.ContactRead;
+import project5.contect_package.file_IO.ContactWrite;
 import project5.util.BadIdInputException;
 import project5.util.ScannerUtil;
 
@@ -11,7 +11,7 @@ import project5.util.ScannerUtil;
 import java.io.File;
 import java.io.IOException;
 
-public class ContactProgram implements ShowMenu{
+public class ContactProgram implements Show {
 
     String name;
     int temp=0;

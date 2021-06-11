@@ -1,12 +1,12 @@
-package project5.contectPackage;
+package project5.contect_package;
 
-import project5.contectPackage.UserInterface.ShowMenu;
+import project5.contect_package.show_contact.Show;
 import project5.util.BadIdInputException;
 import project5.util.ScannerUtil;
 
 import java.io.IOException;
 
-public class ContactApp implements ShowMenu{
+public class ContactApp implements Show {
     ContactProgram contactProgram = new ContactProgram();
     public ContactApp() {
         int button = 0;

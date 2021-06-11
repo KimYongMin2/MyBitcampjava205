@@ -1,6 +1,6 @@
-package project5.contectPackage.UserInterface;
+package project5.contect_package.show_contact;
 
-public interface ShowMenu {
+public interface Show {
      default void showComOrCusCheckMenu() {
         System.out.println("1. Company     2. Customer");
     }
