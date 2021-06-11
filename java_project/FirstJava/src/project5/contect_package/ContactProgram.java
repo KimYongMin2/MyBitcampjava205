@@ -127,6 +127,17 @@ public class ContactProgram implements Show {
         }
     }
 
+    void fileCheck() throws InterruptedException {
+        showMessage("저장된 파일이 있는지 확인합니다");
+        File file = new File("C:\\Users\\USER\\Documents\\MyBitcampjava205" +
+                "\\material\\contact\\contact.txt");
+        if(file.exists()){
+            System.out.println("저장된 파일이 있습니다");
+        }else{
+            System.out.println("저장된 파일이 없습니다");
+        }
+    }
+
     void fileSave() throws InterruptedException {
         showMessage("정보를 파일로 저장합니다");
         File file = new File("C:\\Users\\USER\\Documents\\MyBitcampjava205" +

@@ -9,6 +9,11 @@ import java.io.IOException;
 public class ContactApp implements Show {
     ContactProgram contactProgram = new ContactProgram();
     public ContactApp() {
+        try {
+            contactProgram.fileCheck();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         int button = 0;
         while (!(button == 8)) {
             try {
