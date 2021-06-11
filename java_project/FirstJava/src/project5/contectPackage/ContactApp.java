@@ -1,19 +1,18 @@
 package project5.contectPackage;
 
 import project5.contectPackage.UserInterface.ShowMenu;
-import project5.utilAndException.BadIdInputException;
-import project5.utilAndException.Line;
-import project5.utilAndException.ScannerUtil;
+import project5.util.BadIdInputException;
+import project5.util.ScannerUtil;
 
 import java.io.IOException;
 
-public class ContactApp {
+public class ContactApp implements ShowMenu{
     ContactProgram contactProgram = new ContactProgram();
     public ContactApp() {
         int button = 0;
         while (!(button == 8)) {
             try {
-                ShowMenu.showMainMenu();
+                showMainMenu();
                 button = ScannerUtil.getInputInteger();
                 switch (button) {
                     case 1:
@@ -38,7 +37,7 @@ public class ContactApp {
                         contactProgram.fileRead();
                         break;
                     case 8:
-                        Line.lineDividing();
+                        lineDividing();
                         System.out.println("종료합니다");
                         break;
                     default:
@@ -46,7 +45,7 @@ public class ContactApp {
                 }
 
             } catch (NumberFormatException e) {
-                Line.lineDividing();
+                lineDividing();
                 System.out.println("##### 잘못된 입력입니다 #####");
             } catch (BadIdInputException e) {
                 System.out.println(e.getMessage());

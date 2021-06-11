@@ -1,4 +1,4 @@
-package project5.utilAndException;
+package project5.util;
 
 import java.util.Scanner;
 

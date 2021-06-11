@@ -3,8 +3,8 @@ package project5.contectPackage;
 import project5.contectPackage.construct.CompanyContact;
 import project5.contectPackage.construct.Contact;
 import project5.contectPackage.construct.CustomerContact;
-import project5.utilAndException.BadIdInputException;
-import project5.utilAndException.ScannerUtil;
+import project5.util.BadIdInputException;
+import project5.util.ScannerUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -212,6 +212,11 @@ public class ContactHandler {
     public void constructorCompany() {
         Contact companyContact = new CompanyContact(name, number, email, address, birth, group, companyName, dept, job);
         contacts.add(companyContact);
+    }
+
+    public void delContact(int temp) {
+        contacts.remove(temp);
+        System.out.println("삭제되었습니다");
     }
 
     public void reJobCus(int temp) throws BadIdInputException {
