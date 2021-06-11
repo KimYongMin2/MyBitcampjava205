@@ -205,7 +205,7 @@ public class ContactHandler {
     }
 
     public void constructorCustomer() {
-        Contact customerContact = new CompanyContact(name, number, email, address, birth, group, customerName, item, job);
+        Contact customerContact = new CustomerContact(name, number, email, address, birth, group, customerName, item, job);
         contacts.add(customerContact);
     }
 
