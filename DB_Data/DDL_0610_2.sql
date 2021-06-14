@@ -222,3 +222,25 @@ select ename, deptno,
         )
 from emp
 ;
+
+-- 직급에 따라 급여를 인상하도록 하자
+select ename, sal,
+    decode(job, 'ANALYST', sal*1.05,
+                'SALESMAN', sal*1.1,
+                'MANAGER', sal*1.15,
+                'CLERK', sal*1.2
+    ) as upsal
+from emp
+;
+
+-- case 함수도 분기할 때 사용
+-- case when 조건식 then 참일때 값
+
+select ename, deptno,
+    case when deptno = 10 then 'ACCOUNTING'
+         when deptno = 20 then 'RESEARCH'
+         when deptno = 30 then 'SALES'
+         when deptno = 40 then 'OPERATIONS'
+    end as deptname        
+from emp
+;
