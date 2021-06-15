@@ -30,9 +30,14 @@ select sum(saleprice), avg(saleprice)
 from orders;
 
 -- ​(10) 고객의이름과고객별구매액
-
+select (select name from customer c  where c.custid = o.custid)as name, sum(saleprice)
+from orders o
+group by o.custid;
 -- (11) 고객의이름과고객이구매한도서목록
-
+select name, bookname
+from customer, book, orders
+where customer.custid = orders.custid and book.bookid = orders.bookid
+order by name;
 -- (12) 도서의가격(Book 테이블)과판매가격(Orders 테이블)의차이가가장많은주문
 
 -- (13) 도서의판매액평균보다자신의구매액평균이더높은고객의이름
