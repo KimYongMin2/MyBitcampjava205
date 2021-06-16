@@ -26,7 +26,7 @@ public class HighLowGameProgram implements ShowCount {
     public static void setTimeout(boolean timeout) {
         HighLowGameProgram.timeout = timeout;
     }
-    
+
     public void gamePlay() {
         while (!answerCheck) {
             try {
