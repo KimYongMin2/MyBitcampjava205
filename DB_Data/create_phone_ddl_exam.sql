@@ -1,30 +1,29 @@
-create table phoneInfo_basic ( idx NUMBER(6),
-                              fr_name VARCHAR2(20) NOT NULL,
-                              fr_phonenumber VARCHAR2(20) NOT NULL,
-                              fr_email VARCHAR2(20),
-                              fr_address VARCHAR2(20),
-                              fr_regdate DATE DEFAULT SYSDATE,
-                         
-                              constraint phoneInfo_basic_idx_PK PRIMARY KEY(idx)
-                         
-                              );
-                  
-create table phoneInfo_univ ( idx NUMBER(6),
-                              fr_u_major VARCHAR2(20)DEFAULT 'N' NOT NULL , 
-                              fr_u_year NUMBER(1) DEFAULT 1 CHECK (fr_u_year between 0 and 5) NOT NULL,
-                              fr_ref NUMBER(6) NOT NULL,
-                              
-                              constraint phoneInfo_univ_idx_PK PRIMARY KEY(idx),
-                              constraint phoneInfo_univ_fr_ref_FK FOREIGN KEY (fr_ref)REFERENCES phoneInfo_basic(idx)
-                              
-                              );
-                              
-create table phoneInfo_com (  idx NUMBER(6),
-                              fr_c_company VARCHAR2(20) DEFAULT 'N' NOT NULL, 
-                              fr_ref NUMBER(6) NOT NULL,
-                              
-                              constraint phoneInfo_com_idx_PK PRIMARY KEY(idx),
-                              constraint phoneInfo_com_fr_ref_FK FOREIGN KEY (fr_ref) REFERENCES phoneInfo_basic(idx)
-                             
-                              );                        
-                              
+drop table phoneinfo_univ;
+drop table phoneinfo_com;
+drop table phoneInfo_basic;
+
+
+-- PhoneBook DDL : 테이블 정의서 를 참고 해서 DDL 장성한다.
+CREATE table phoneInfo_basic (
+    idx number(6) constraint pi_basic_idx_PK primary key,
+    fr_name VARCHAR2(20) not null,
+    fr_phonenumber varchar2(20) not null,
+    fr_email varchar2(20) ,
+    fr_address varchar2(20),
+    fr_regdate date default sysdate
+);
+create table phoneinfo_univ (
+    idx number(6),
+    fr_u_major VARCHAR2(20) default 'N' not null,
+    fr_u_year number(1) default 1  not null, --check (fr_u_year between 1 and 4),
+    fr_ref number(6) not null,
+    constraint pi_univ_idx_PK primary key (idx),
+    constraint chk check (fr_u_year between 1 and 4), -- 테이블 레벨에서 check  제약 설정 
+    constraint pi_univ_ref_FK FOREIGN KEY (fr_ref) REFERENCES phoneInfo_basic (idx)
+);
+-- phoneinfo_com
+create table phoneinfo_com (
+    idx number(6) constraint pi_com_idx_PK primary key,
+    fr_c_company VARCHAR2(20) default 'N' not null,
+    fr_ref number(6) not null constraint pi_com_ref_FK REFERENCES phoneinfo_basic (idx)
+);
