@@ -6,13 +6,17 @@ public interface ShowContact {
     }
 
     default void showCusMenu() {
+        System.out.println("------------------------------------------------------------------------");
         System.out.println("1. 전화번호    2. 이메일    3. 주소    4. 생일    5. 그룹");
         System.out.println("6. 거래처회사이름     7. 거래품목     8. 직급");
+        System.out.println("------------------------------------------------------------------------");
     }
 
     default void showComMenu() {
+        System.out.println("------------------------------------------------------------------------");
         System.out.println("1. 전화번호    2. 이메일    3. 주소    4. 생일    5. 그룹");
         System.out.println("6. 회사이름     7. 부서이름     8. 직급");
+        System.out.println("------------------------------------------------------------------------");
     }
 
     default void showMainMenu() {
@@ -33,5 +37,20 @@ public interface ShowContact {
 
     default void lineDividing(){
         System.out.println("------------------------------------------------------------------------");
+    }
+
+    default void showFileSaveMenu() {
+        System.out.println("------------------------------------------------------------------------");
+        System.out.println("파일을 덮어씌우시겠습니까?");
+        System.out.println("1. 네     2. 아니오");
+        System.out.println("------------------------------------------------------------------------");
+    }
+
+    default void showFileReadMenu() {
+        System.out.println("------------------------------------------------------------------------");
+        System.out.println("현재 저장된 파일이 지워지고 덮어씌워집니다");
+        System.out.println("1. 네     2. 아니오");
+        System.out.println("------------------------------------------------------------------------");
+
     }
 }

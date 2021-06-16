@@ -9,7 +9,11 @@ import java.io.IOException;
 public class ContactApp implements ShowContact {
     ContactProgram contactProgram = new ContactProgram();
     public ContactApp() {
-        showFileCheck();
+        try {
+            contactProgram.fileCheck();
+        }catch (InterruptedException e){
+            System.out.println("오류발생");
+        }
         int button = 0;
         while (!(button == 8)) {
             try {
@@ -59,14 +63,6 @@ public class ContactApp implements ShowContact {
             } catch (InterruptedException e) {
                 System.out.println("끝내기 오류");
             }
-        }
-    }
-
-    private void showFileCheck() {
-        try {
-            contactProgram.fileCheck();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
         }
     }
 }

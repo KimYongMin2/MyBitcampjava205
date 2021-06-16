@@ -78,7 +78,7 @@ public class ContactProgram implements ShowContact {
             System.out.println("수정할 이름의 정보입니다.");
             showFindedUserData(temp);
             checkComOrCus = CheckComOrCusAndShowMenu();
-            setMenuButton("수정할 정보를 선택해주세요");
+            setMenuButton("수정할 정보를 선택해주세요 : ");
             if (!checkComOrCus && menu > 5){
                 menu += 3;
             }
@@ -138,22 +138,45 @@ public class ContactProgram implements ShowContact {
     }
 
     void fileSave() throws InterruptedException {
-        showMessage("정보를 파일로 저장합니다");
-        File file = new File("C:\\Users\\bitcamp\\Documents\\MyBitcampjava205" +
-                "\\material\\contact\\contact.txt");
-        ContactWrite contactWrite = new ContactWrite(contactHandler.getContacts(), file);
-        contactWrite.start();
-        contactWrite.join();
+        fileCheck();
+        showFileSaveMenu();
+        setMenuButton("선택 : ");
+        switch (menu){
+            case 1 :
+                showMessage("정보를 파일로 저장합니다");
+                File file = new File("C:\\Users\\bitcamp\\Documents\\MyBitcampjava205" +
+                        "\\material\\contact\\contact.txt");
+                ContactWrite contactWrite = new ContactWrite(contactHandler.getContacts(), file);
+                contactWrite.start();
+                contactWrite.join();
+                break;
+            case 2 :
+                System.out.println("취소되었습니다");
+                break;
+            default:
+                showMessage("잘못누르셨습니다");
+        }
     }
 
     void fileRead() throws IOException, ClassNotFoundException, InterruptedException {
-        showMessage("저장된 정보를 불러옵니다");
-        File file = new File("C:\\Users\\bitcamp\\Documents\\MyBitcampjava205" +
-                "\\material\\contact\\contact.txt");
-        ContactRead contactRead = new ContactRead(contactHandler.getContacts(), file);
-        contactRead.start();
-        contactRead.join();
-        contactHandler.setContacts(contactRead.getContacts());
+        showFileReadMenu();
+        setMenuButton("선택 : ");
+        switch (menu){
+            case 1 :
+                showMessage("저장된 정보를 불러옵니다");
+                File file = new File("C:\\Users\\bitcamp\\Documents\\MyBitcampjava205" +
+                        "\\material\\contact\\contact.txt");
+                ContactRead contactRead = new ContactRead(contactHandler.getContacts(), file);
+                contactRead.start();
+                contactRead.join();
+                contactHandler.setContacts(contactRead.getContacts());
+                break;
+            case 2 :
+                System.out.println("취소되었습니다");
+                break;
+            default:
+                showMessage("잘못누르셨습니다");
+        }
 
     }
 
@@ -226,8 +249,7 @@ public class ContactProgram implements ShowContact {
     }
 
     private void setMenuButton(String s) {
-        System.out.println(s);
-        System.out.print("선택 : ");
+        System.out.print(s);
         menu = ScannerUtil.getInputInteger();
     }
 }
