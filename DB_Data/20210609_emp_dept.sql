@@ -1,23 +1,30 @@
+
+--  주석
+-- 2021.06.09
+
+-- emp, dept DDL -> DML 
+-- Table 생성 -> 테이블에 데이터를 저장(insert)
+
 drop table emp; 
 drop table dept; 
 
-create table dept(                        -- dept table ����
-  deptno number,                          -- �μ���ȣ
-  dname  varchar2(14),                    -- �μ���
-  loc    varchar2(13),                    -- �μ���ġ
-  constraint pk_dept primary key (deptno) -- deptno�� pk����
+create table dept(                        -- dept table 생성
+  deptno number,                          -- 부서번호
+  dname  varchar2(14),                    -- 부서명
+  loc    varchar2(13),                    -- 부서위치
+  constraint pk_dept primary key (deptno) -- deptno로 pk설정
 );
 
-create table emp(                         -- emp table ����
-  empno    number,                        -- ������ȣ
-  ename    varchar2(10),                  -- ������
-  job      varchar2(9),                   -- ��å
-  mgr      number(4),                     -- ���Ŵ���
-  hiredate date,                          -- �Ի���
-  sal      number(7),                     -- ����
-  comm     number(7),                     -- ���ʽ�
-  deptno   number,                        -- �μ���ȣ
-  constraint pk_emp primary key (empno)   -- empno�� pk����
+create table emp(                         -- emp table 생성
+  empno    number,                        -- 직원번호
+  ename    varchar2(10),                  -- 직원명
+  job      varchar2(9),                   -- 직책
+  mgr      number(4),                     -- 담당매니저
+  hiredate date,                          -- 입사일
+  sal      number(7),                     -- 월급
+  comm     number(7),                     -- 보너스
+  deptno   number,                        -- 부서번호
+  constraint pk_emp primary key (empno)   -- empno로 pk설정
 );
 
 -- DEPT DML
@@ -25,8 +32,6 @@ insert into dept values(10, 'ACCOUNTING', 'NEW YORK');
 insert into dept values(20, 'RESEARCH', 'DALLAS');
 insert into dept values(30, 'SALES', 'CHICAGO');
 insert into dept values(40, 'OPERATIONS', 'BOSTON');
-
-select * from dept;
 
 -- EMP DML
 insert into emp values( 7839, 'KING', 'PRESIDENT', null, to_date('1996-11-17','yyyy-mm-dd'), 5000, null, 10);
@@ -40,11 +45,14 @@ insert into emp values( 7499, 'ALLEN', 'SALESMAN', 7698, to_date('20-2-1981','dd
 insert into emp values( 7521, 'WARD', 'SALESMAN', 7698, to_date('22-2-1981','dd-mm-yyyy'), 1250, 500, 30);
 insert into emp values( 7654, 'MARTIN', 'SALESMAN', 7698, to_date('28-9-1981','dd-mm-yyyy'), 1250, 1400, 30);
 insert into emp values( 7844, 'TURNER', 'SALESMAN', 7698, to_date('8-9-1981','mm-dd-yyyy'), 1500, 0, 30);
-insert into emp values( 7876, 'ADAMS', 'CLERK', 7788, to_date('13-7-1987', 'dd-mm-yyyy') - 51, 1100, null, 20);
+insert into emp values( 7876, 'ADAMS', 'CLERK', 7788, to_date('13-7-87', 'dd-mm-yy') - 51, 1100, null, 20);
 insert into emp values( 7900, 'JAMES', 'CLERK', 7698, to_date('3-12-1981','mm-dd-yyyy'), 950, null, 30);
 insert into emp values( 7934, 'MILLER', 'CLERK', 7782, to_date('2003-1-23','yyyy-mm-dd'), 1300, null, 10);
 
+commit;
+
+-- 검색 : 질의 -> Select
+select * from dept;
 select * from emp;
 
-commit;
 
