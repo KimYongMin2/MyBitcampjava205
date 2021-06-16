@@ -1,7 +1,7 @@
 package project6;
 
 import project6.contect_package.ContactApp;
-import project6.game_package.countdown.HighLowGameWhile;
+import project6.game_package.countdown.HighLowGame;
 import project6.util.ScannerUtil;
 
 public class SmartPhone {
@@ -18,7 +18,7 @@ public class SmartPhone {
                                     break;
                             case 2:
                                     System.out.println("카운트다운");
-                                    new HighLowGameWhile();
+                                    new HighLowGame();
                                     break;
                             case 3:
                                     System.out.println("종료합니다");

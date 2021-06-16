@@ -5,12 +5,12 @@ import project6.game_package.countdown.show_countdown.ShowCount;
 
 import javax.swing.*;
 
-public class HighLowGameWhile implements ShowCount {
+public class HighLowGame implements ShowCount {
     public static boolean answerCheck = false;
     public static boolean playCheck = false;
     public static boolean timeout = false;
 
-    public HighLowGameWhile() {
+    public HighLowGame() {
         int button = 0;
         while (!(button == 2)) {
             setGameCheck();
@@ -25,8 +25,8 @@ public class HighLowGameWhile implements ShowCount {
                         int comAnswer = (int) (Math.random() * 100);
                         System.out.println("랜덤 숫자가 생성되었습니다.");
 
-                        CountdownThreadWhile countdownThreadWhile = new CountdownThreadWhile();
-                        countdownThreadWhile.start();
+                        CountdownThread countdownThread = new CountdownThread();
+                        countdownThread.start();
                         while (!answerCheck) {
                             try {
                                 if(timeout){
