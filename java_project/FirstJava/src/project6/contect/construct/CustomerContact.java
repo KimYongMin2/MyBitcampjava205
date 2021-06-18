@@ -1,4 +1,4 @@
-package project6.contect_package.construct_contact;
+package project6.contect.construct;
 
 public class CustomerContact extends Contact {
     private String customerComName;

@@ -1,4 +1,4 @@
-package project6.contect_package.show_contact;
+package project6.contect.show;
 
 public interface ShowContact {
      default void showComOrCusCheckMenu() {

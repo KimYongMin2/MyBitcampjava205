@@ -1,6 +1,6 @@
-package project6.game_package.countdown;
+package project6.game.countdown;
 
-import project6.game_package.countdown.show_countdown.ShowCount;
+import project6.game.countdown.show_countdown.ShowCount;
 
 import javax.swing.*;
 

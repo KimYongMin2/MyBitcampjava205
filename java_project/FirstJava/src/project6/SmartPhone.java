@@ -1,7 +1,7 @@
 package project6;
 
-import project6.contect_package.ContactApp;
-import project6.game_package.countdown.HighLowGameApp;
+import project6.contect.ContactApp;
+import project6.game.countdown.HighLowGameApp;
 import project6.util.ScannerUtil;
 
 public class SmartPhone {
@@ -15,11 +15,13 @@ public class SmartPhone {
                     switch (menu) {
                             case 1:
                                     System.out.println("연락처");
-                                    new ContactApp();
+                                    ContactApp contactApp = new ContactApp();
+                                    contactApp.contactAppStart();
                                     break;
                             case 2:
                                     System.out.println("카운트다운");
-                                    new HighLowGameApp();
+                                    HighLowGameApp highLowGameApp = new HighLowGameApp();
+                                    highLowGameApp.highLowGameAppStart();
                                     break;
                             case 3:
                                     System.out.println("종료합니다");

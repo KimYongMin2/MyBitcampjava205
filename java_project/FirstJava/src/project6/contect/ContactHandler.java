@@ -1,8 +1,8 @@
-package project6.contect_package;
+package project6.contect;
 
-import project6.contect_package.construct_contact.CompanyContact;
-import project6.contect_package.construct_contact.Contact;
-import project6.contect_package.construct_contact.CustomerContact;
+import project6.contect.construct.CompanyContact;
+import project6.contect.construct.Contact;
+import project6.contect.construct.CustomerContact;
 import project6.util.BadIdInputException;
 import project6.util.ScannerUtil;
 

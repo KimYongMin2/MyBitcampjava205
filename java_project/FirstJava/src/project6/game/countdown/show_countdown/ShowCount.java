@@ -1,4 +1,4 @@
-package project6.game_package.countdown.show_countdown;
+package project6.game.countdown.show_countdown;
 
 public interface ShowCount {
     default void showStartMenu() {

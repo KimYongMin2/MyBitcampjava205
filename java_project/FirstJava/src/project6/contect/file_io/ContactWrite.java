@@ -1,6 +1,6 @@
-package project6.contect_package.file_IO;
+package project6.contect.file_io;
 
-import project6.contect_package.construct_contact.Contact;
+import project6.contect.construct.Contact;
 
 import java.io.File;
 import java.io.FileOutputStream;

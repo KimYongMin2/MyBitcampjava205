@@ -1,13 +1,14 @@
-package project6.game_package.countdown;
+package project6.game.countdown;
 
 import common.util.ScannerUtil;
-import project6.game_package.countdown.show_countdown.ShowCount;
+import project6.game.countdown.show_countdown.ShowCount;
 
 public class HighLowGameApp implements ShowCount {
     HighLowGameProgram highLowGameProgram = new HighLowGameProgram();
     private int button = 0;
 
-    public HighLowGameApp() {
+    public HighLowGameApp() {}
+    public void highLowGameAppStart(){
         while (!(button == 2)) {
             try {
                 highLowGameProgram.setGameCheck();

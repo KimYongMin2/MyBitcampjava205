@@ -1,6 +1,6 @@
-package project6.contect_package;
+package project6.contect;
 
-import project6.contect_package.show_contact.ShowContact;
+import project6.contect.show.ShowContact;
 import project6.util.BadIdInputException;
 import project6.util.ScannerUtil;
 
@@ -8,7 +8,8 @@ import java.io.IOException;
 
 public class ContactApp implements ShowContact {
     private ContactProgram contactProgram = new ContactProgram();
-    public ContactApp() {
+    public ContactApp() {}
+    public void contactAppStart(){
         try {
             contactProgram.fileCheck();
         }catch (InterruptedException e){
