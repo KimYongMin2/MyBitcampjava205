@@ -12,11 +12,11 @@ import java.io.IOException;
 
 public class ContactProgram implements ShowContact {
 
-    String name;
-    int temp=0;
-    int menu;
-    boolean check = false;
-    ContactHandler contactHandler = new ContactHandler();
+    private String name;
+    private int temp=0;
+    private int menu;
+    private boolean check = false;
+    private ContactHandler contactHandler = new ContactHandler();
 
     void addContacts() throws BadIdInputException {
         showMessage("정보를 저장합니다");

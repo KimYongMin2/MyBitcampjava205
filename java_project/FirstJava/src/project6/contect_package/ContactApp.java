@@ -7,7 +7,7 @@ import project6.util.ScannerUtil;
 import java.io.IOException;
 
 public class ContactApp implements ShowContact {
-    ContactProgram contactProgram = new ContactProgram();
+    private ContactProgram contactProgram = new ContactProgram();
     public ContactApp() {
         try {
             contactProgram.fileCheck();
