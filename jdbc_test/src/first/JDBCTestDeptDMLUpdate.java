@@ -36,16 +36,31 @@ public class JDBCTestDeptDMLUpdate {
 
             // 사용자에게 정보를 받아 데이터를 수정
             // 10 dev seoul ==> " "
-            System.out.println("부서 데이터를 수정합니다");
-            System.out.println("10 dev seoul 형식으로 데이터를 입력해주세요");
+            System.out.println("부서 데이터의 수정을 시작합니다.");
+            System.out.println("10 dev seoul 형식으로 데이터를 입력해 주세요.");
             String input = scanner.nextLine();
 
-            // String 타입의 배열 String[] 만들기
+            // String[]
             String[] inputs = input.split(" ");
 
-            for(String str : inputs){
-                System.out.println(str);
+//			for(String str : inputs) {
+//				System.out.println(str);
+//			}
+
+            String sql = "update dept01 set dname=?, loc=? where deptno=?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1,inputs[1]);
+            preparedStatement.setString(2, inputs[2]);
+            preparedStatement.setInt(3, Integer.parseInt(inputs[0]));
+
+            int result = preparedStatement.executeUpdate();
+
+            if(result > 0) {
+                System.out.println("수정되었습니다.");
+            } else {
+                System.out.println("찾으시는 부서가 존재하지 않습니다.");
             }
+
 
 
             connection.commit();
