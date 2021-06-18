@@ -8,7 +8,8 @@ import java.io.IOException;
 
 public class ContactApp implements Show {
     ContactProgram contactProgram = new ContactProgram();
-    public ContactApp() {
+    public ContactApp() {}
+    public void contactAppStart(){
         showFileCheck();
         int button = 0;
         while (!(button == 8)) {
