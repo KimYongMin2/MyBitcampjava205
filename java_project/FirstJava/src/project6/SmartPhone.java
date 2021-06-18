@@ -6,7 +6,8 @@ import project6.util.ScannerUtil;
 
 public class SmartPhone {
     int menu = 0;
-    public SmartPhone() {
+    public SmartPhone() {}
+        public void smartPhoneStart(){
             while (!(menu == 3)) {
                     System.out.println("1. 연락처     2. 카운트다운     3. 종료");
                     System.out.print("원하시는 서비스를 선택해주세요 : ");
