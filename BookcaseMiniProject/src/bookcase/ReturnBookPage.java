@@ -1,19 +1,16 @@
 package bookcase;
 
-import java.sql.*;
 import java.util.*;
 
 import bookcase.crud.BookCRUD;
 import bookcase.crud.RentalCRUD;
-import bookcase.object.Book;
-import bookcase.object.CommonObject;
+import bookcase.object.Common;
 import bookcase.object.Member;
 import bookcase.object.Using;
 import bookcase.show.*;
-import bookcase.util.JDBCconnecting;
 import bookcase.util.ScannerUtil;
 
-public class ReturnBookPage extends CommonObject implements Show {
+public class ReturnBookPage extends Common implements Show {
     private static BookCRUD bookCrud = BookCRUD.getInstance();
     private static RentalCRUD rentalCrud = RentalCRUD.getInstance();
     private ArrayList<Using> usingBooks = new ArrayList<>();

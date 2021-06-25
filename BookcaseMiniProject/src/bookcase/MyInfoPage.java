@@ -1,12 +1,10 @@
 package bookcase;
 
-import java.sql.*;
-
 import bookcase.object.*;
 import bookcase.show.*;
 import bookcase.util.*;
 
-public class MyInfoPage extends CommonObject implements Show {
+public class MyInfoPage extends Common implements Show {
 
     private MemberHandler mh = new MemberHandler();
 

@@ -7,7 +7,7 @@ import bookcase.object.*;
 import bookcase.show.*;
 import bookcase.util.*;
 
-public class ReviewAddPage extends CommonObject implements Show {
+public class ReviewAddPage extends Common implements Show {
 
 	private ReviewCRUD reviewCrud = ReviewCRUD.getInstance();
 	private BookCRUD bookCrud = BookCRUD.getInstance();

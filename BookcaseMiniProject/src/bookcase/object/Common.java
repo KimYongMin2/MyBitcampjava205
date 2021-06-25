@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommonObject {
+public class Common {
     protected static Connection con = JDBCconnecting.connecting();
     protected static List<Book> bookList = new ArrayList<>();
     protected static BookCRUD bookCrud = BookCRUD.getInstance();

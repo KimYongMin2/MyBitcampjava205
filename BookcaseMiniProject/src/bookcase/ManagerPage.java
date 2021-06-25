@@ -6,7 +6,7 @@ import bookcase.object.*;
 import bookcase.show.*;
 import bookcase.util.*;
 
-public class ManagerPage extends CommonObject implements Show {
+public class ManagerPage extends Common implements Show {
 
     private static MemberCRUD memberCrud = MemberCRUD.getInstance();
     private int chkAge;

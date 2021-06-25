@@ -7,7 +7,7 @@ import bookcase.object.*;
 import bookcase.show.*;
 import bookcase.util.*;
 
-public class ShowBookListPage extends CommonObject implements Show {
+public class ShowBookListPage extends Common implements Show {
 	private static BookCRUD bookCrud  = BookCRUD.getInstance();
 	private static RentalCRUD rentalCrud  = RentalCRUD.getInstance();
 	private static ReturnCRUD returnCrud = ReturnCRUD.getInstance();

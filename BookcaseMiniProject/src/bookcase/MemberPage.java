@@ -1,11 +1,11 @@
 package bookcase;
 
-import bookcase.object.CommonObject;
+import bookcase.object.Common;
 import bookcase.object.Member;
 import bookcase.show.Show;
 import bookcase.util.ScannerUtil;
 
-public class MemberPage extends CommonObject implements Show {
+public class MemberPage extends Common implements Show {
 
     public MemberPage(Member member){
         this.member = member;
