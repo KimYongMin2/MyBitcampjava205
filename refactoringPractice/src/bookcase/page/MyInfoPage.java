@@ -11,14 +11,13 @@ public class MyInfoPage implements Show {
 	public MyInfoPage(Member member) {
 		this.member = member;
 	}
-	
-	MemberHandler mh = new MemberHandler();
     private int menuButton = 0;
 	
 	public void MyInfoEditStrat() {
 		while (menuButton != 4) {
 		    try {
                 showEditMyInfoMenu();
+                MemberHandler mh = new MemberHandler();
                 menuButton = ScannerUtil.getInputIntegerS(">> 원하시는 메뉴를 선택하세요 : ");
                 switch (menuButton) {
                 	case 1: // 내 정보 확인하기

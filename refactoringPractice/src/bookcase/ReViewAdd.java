@@ -1,6 +1,5 @@
 package bookcase;
 
-import java.sql.*;
 import java.util.*;
 
 import bookcase.crud.*;
@@ -8,34 +7,29 @@ import bookcase.object.*;
 import bookcase.show.*;
 import bookcase.util.*;
 
-public class ReViewAdd implements Show {
+public class ReViewAdd extends Common implements Show {
 
-	private Connection con = JDBCconnecting.connecting();
 	private ReviewCRUD reviewCrud = ReviewCRUD.getInstance();
+	private ViewReviewCRUD viewReviewCrud = ViewReviewCRUD.getInstance();
 	private BookCRUD bookCrud = BookCRUD.getInstance();
-	private ArrayList<Book> books = new ArrayList<>();
-	private ArrayList<ViewReview> viewReviews = new ArrayList<>();
+	
+	private ArrayList<ViewReview> viewReviews = new ArrayList<ViewReview>();
 
 	private double rScore; // 별점
 	private String rComment; // 한줄평
-	private Member member;
-	private Book book;
-	private int temp;
-	private boolean chkFindBook;
-	private String bName;
 
 	public ReViewAdd(Member member) {
 		this.member = member;
 	}
 
 	public void addingReview() {
-		reviewCrud.getReviewList(con);
-		books = bookCrud.getBookList(con);
-		findBook();
-		if (chkFindBook) {
+		bookList = bookCrud.getBookList(con);
+		showReviewAdd();
+		bName = ScannerUtil.getInputStringS(">> 리뷰를 작성하실 도서명을 입력하세요 : ");
+		book = findBook(bookList, bName);
+		bookFindChk = setFindBookCheck(book);
+		if (bookFindChk) {
 			setReviewComment();
-			System.out.println("▶ 리뷰 작성이 완료되었습니다!");
-			System.out.println("==========================");
 		}
 	}
 
@@ -47,6 +41,7 @@ public class ReViewAdd implements Show {
 				(0, member.getMemberCode(), 
 						book.getBookCode(), 
 						rScore, rComment));
+		showReviewAddSuccess();
 	}
 
 	private void setScore() { // 평점 주기
@@ -90,29 +85,9 @@ public class ReViewAdd implements Show {
 			}
 		}
 	}
-
-	public void findBook() {// 책확인
-		chkFindBook = false;
-		while (!chkFindBook) {
-			System.out.println("================================");
-			bName = ScannerUtil.getInputStringS(">> 리뷰를 작성하실 도서명을 입력하세요 : ");
-
-			for (int i = 0; i < books.size(); i++) {
-				if (bName.equals(books.get(i).getbName())) {
-					temp = i;
-					chkFindBook = true;
-				}
-			}
-			if (!chkFindBook) {
-				System.out.println("[!] 해당 도서를 찾을 수 없습니다.");
-				break;
-			} else {
-				book = books.get(temp);
-			}
-		}
-	}
 	
-	public void showReview() {
+	public void showReview() { // 리뷰 조회
+		viewReviews = viewReviewCrud.getReviewList(con);
 		System.out.println("▶ 작성된 리뷰 목록을 출력합니다");
 		System.out.println();
 		System.out.println("■■■■■■■■■■■ 리뷰 조회 ■■■■■■■■■■■");
@@ -125,12 +100,12 @@ public class ReViewAdd implements Show {
 		}
 	}
 	
-	public void showBookList() {
+	public void showBookList() { // 도서 목록
 		System.out.println(">> 전체 도서 목록을 출력합니다");
 		System.out.println();
 		reviewCrud.getReviewList(con);
-		books = bookCrud.getBookList(con);
-		for (Book book : books) {
+		bookList = bookCrud.getBookList(con);
+		for (Book book : bookList) {
 			System.out.println(book);
 		}
 	}

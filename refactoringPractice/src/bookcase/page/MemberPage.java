@@ -5,7 +5,7 @@ import bookcase.object.*;
 import bookcase.show.*;
 import bookcase.util.*;
 
-public class MemberPage implements Show {
+public class MemberPage extends Common implements Show {
     private int menuButton = 0;
     private Member member;
     public MemberPage(Member member){
@@ -26,7 +26,7 @@ public class MemberPage implements Show {
                         break;
                     case 2:
                         // 도서 대여
-                        new BookRent(member).BookUsingStart();
+                        new BookRentPage(member).BookUsingStart();
                         break;
                     case 3:
                         // 도서 반납

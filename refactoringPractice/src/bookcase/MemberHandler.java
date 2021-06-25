@@ -8,7 +8,7 @@ import bookcase.crud.*;
 import bookcase.object.*;
 import bookcase.util.*;
 
-public class MemberHandler {
+public class MemberHandler extends Common {
 
 	/**
 	 * MemberHandler클래스
@@ -30,10 +30,6 @@ public class MemberHandler {
 	 * 로그인 성공시에만 매니저 페이지 접근 
 	 *  @author 지원
 	 */
-
-	private boolean chk7;
-
-	private Connection con = JDBCconnecting.connecting();
 	private MemberCRUD memberCrud = MemberCRUD.getInstance();
 	private ReviewCRUD reviewCrud = ReviewCRUD.getInstance();
 	private RentalCRUD rentalCrud = RentalCRUD.getInstance();
@@ -128,8 +124,8 @@ public class MemberHandler {
 			System.out.print("▶ 핸드폰 번호 : ");
 			/*입력*/String phoneNum = ScannerUtil.getInputString();
 			isEmpty(phoneNum);
-			boolean chk4 = Pattern.matches("^([0-9]{3})(\\-)([0-9]{3,4})(\\-)([0-9]{3,4})$", phoneNum);
-			if(!chk4) {
+			boolean chk3 = Pattern.matches("^([0-9]{3})(\\-)([0-9]{3,4})(\\-)([0-9]{3,4})$", phoneNum);
+			if(!chk3) {
 				throw new MyMadeException("[!] 전화번호 형식에 부합하지 않습니다");
 			}
 
@@ -141,12 +137,12 @@ public class MemberHandler {
 			/*입력*/String inputemail = ScannerUtil.getInputString();//이메일은 null값이 가능하기 때문에 isEmpty처리 하지 않음
 			if(inputemail.equals("")) { //공란은 입력하면, email에는 null
 			} else {
-				boolean chk5 = true;
-				while(chk5) {
-					boolean chk6 = Pattern.matches("^([a-zA-Z0-9\\_\\+\\.\\-]+)(\\@)([a-z]*)(\\.?)([a-z]*)(\\.?)([a-z]*)$", inputemail);
-					if(chk6) {
+				boolean chk4 = true;
+				while(chk4) {
+					boolean chk5 = Pattern.matches("^([a-zA-Z0-9\\_\\+\\.\\-]+)(\\@)([a-z]*)(\\.?)([a-z]*)(\\.?)([a-z]*)$", inputemail);
+					if(chk5) {
 						email = inputemail;
-						chk5 = false;}
+						chk4 = false;}
 					else {
 						System.out.println("[!] 이메일 형식에 부합하지 않습니다.");
 						/*입력*/inputemail = ScannerUtil.getInputString();
@@ -238,9 +234,8 @@ public class MemberHandler {
 			System.out.println("■■■■■■■■■■■ 관리자 로그인 ■■■■■■■■■■■");
 			members = memberCrud.getMemberList(con);
 			if(members.size() > 0) {
-				chk7 = true;
 				boolean idCheck = false;
-				while (chk7) {
+				while (true) {
 					System.out.print("▶ ID : ");
 					/*입력*/String ID = ScannerUtil.getInputString();
 					isEmpty(ID);

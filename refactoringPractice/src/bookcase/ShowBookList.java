@@ -1,19 +1,17 @@
 package bookcase;
 
-import java.sql.*;
 import java.util.*;
 
 import bookcase.crud.*;
 import bookcase.object.*;
 import bookcase.util.*;
 
-public class ShowBookList {
-	private Connection con = JDBCconnecting.connecting();
+public class ShowBookList extends Common {
+
 	private BookCRUD bookCrud  = BookCRUD.getInstance();
 	private RentalCRUD rentalCrud  = RentalCRUD.getInstance();
 	private ReturnCRUD returnCrud = ReturnCRUD.getInstance();
 
-	private ArrayList<Book> books = new ArrayList<>();
 	private ArrayList<Return> returns = new ArrayList<>();
 
 	public void showMyUsingBook(Member member){ //내가 대여한 도서 목록, 반납기한 보기
@@ -29,25 +27,25 @@ public class ShowBookList {
 	}
 
 	public void showStarBook(){
-		books = bookCrud.getBestBookList(con);
+		bookList = bookCrud.getBestBookList(con);
 		System.out.println("■■■■■■■■■■■ 랭    킹 ■■■■■■■■■■■");
-		if(books.isEmpty()) {
+		if(bookList.isEmpty()) {
 			System.out.println(">> 랭킹이 존재하지 않습니다.");
 		} else {
-			for(int i = 0 ; i < books.size() ; i ++) {
+			for(int i = 0 ; i < bookList.size() ; i ++) {
 				System.out.println("▶ 순 위 : "+(i+1)+"위");
-				System.out.println("▶ 도서명 : "+books.get(i).getbName());
+				System.out.println("▶ 도서명 : "+bookList.get(i).getbName());
 			}
 		}
 	}
 
 	public void showCanUsingBook(){
-		books = rentalCrud.getPossibleList(con);
+		bookList = rentalCrud.getPossibleList(con);
 
-		if(books.isEmpty()) {
+		if(bookList.isEmpty()) {
 			System.out.println("[!] 대여가능한 도서가 없습니다");
 		} else {
-			for(Book book:books) {
+			for(Book book:bookList) {
 				System.out.println();
 				System.out.println(book);
 				System.out.println();

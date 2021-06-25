@@ -17,13 +17,12 @@ public class ManagerPage implements Show {
 	private ArrayList<Book> bookList = new ArrayList<Book>();
 	private ArrayList<Member> memberList = new ArrayList<Member>();
 	private int menuButton = 0;
-	
-	ManagerHandler managerHandler = new ManagerHandler();
 
     public void bookManagerStart(){
         while (menuButton != 7) {
             try {
                 showBookManagerMenu();
+                ManagerHandler managerHandler = new ManagerHandler();
                 menuButton = ScannerUtil.getInputIntegerS(">> 원하시는 메뉴를 선택하세요 : ");
                 bookList = bookCrud.getBookList(con);
                 memberList = memberCrud.getMemberList(con);
