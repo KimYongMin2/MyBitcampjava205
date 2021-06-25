@@ -21,7 +21,6 @@ public class BookRentPage extends Common implements Show {
 		while (menuButton != 2) {
 			try {
 				showBookUsingMenu();
-
 				menuButton = ScannerUtil.getInputIntegerS(">> 원하시는 메뉴를 선택하세요. : ");
 
 				switch (menuButton) {
@@ -44,39 +43,23 @@ public class BookRentPage extends Common implements Show {
 
 	}
 
-
 	public void usingBook(){
 		// 책확인
-		bookFindChk = false;
 		bookList = bookCrud.getBookList(con);
+		bookFindChk = false;
 
 		showRentalBookPage();
 
 		bName = ScannerUtil.getInputStringS(">> 대여할 도서명을 입력해주세요 : ");
 
-		findBook();
-		
-		if(bookFindChk){
-			if(bookList.get(temp).getbUsing().equals("false")) {
-				addUsingBook();
-			} else { // bUsing = true
-				System.out.println("[!] 이미 대여중인 책입니다.");
-			}
+		book = findBook(bookList, bName);
+		bookFindChk = setFindBookCheck(book);
+		checkUsingbook = setCheckUsingBook();
 
-		}
-	}
-
-	private void findBook() {
-		for(int i = 0; i < bookList.size(); i++) {
-			if(bName.equals(bookList.get(i).getbName())) {
-				temp = i;
-				bookFindChk = true;
-			}
-		}
-		if(!bookFindChk) {
-			System.out.println("[!] 해당 도서를 찾지 못하였습니다.");
-		} else { // chk = true
-			book = bookList.get(temp);
+		if (!checkUsingbook){
+			addUsingBook();
+		}else{
+			System.out.println("[!] 이미 대여중인 책입니다.");
 		}
 	}
 

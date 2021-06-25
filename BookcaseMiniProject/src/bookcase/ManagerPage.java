@@ -101,16 +101,18 @@ public class ManagerPage extends Common implements Show {
 
         bName = ScannerUtil.getInputStringS(">> 삭제할 도서명을 입력해주세요 : ");
         
-        if(bookList != null) {
-            findBook();
+        if(bookList == null) {
+            System.out.println("[!] 현재 삭제할 도서가 존재하지 않습니다.");
+        }else{
+            book = findBook(bookList, bName);
+            bookFindChk = setFindBookCheck(book);
+
             if(bookFindChk){
                 bookCrud.deleteBook(con, bookList.get(temp));
                 System.out.println("▶ 도서가 삭제되었습니다.\n");
             }else{
-	        	System.out.println("[!] 해당하는 도서를 찾지 못했습니다.");
-	        }
-        } else {
-        	System.out.println("[!] 현재 삭제할 도서가 존재하지 않습니다.");
+                System.out.println("[!] 해당하는 도서를 찾지 못했습니다.");
+            }
         }
     }
 
@@ -120,7 +122,9 @@ public class ManagerPage extends Common implements Show {
         bookFindChk = false;
         
         bName = ScannerUtil.getInputStringS(">> 수정하실 도서명을 입력하세요. : ");
-        findBook();
+
+        book = findBook(bookList, bName);
+        bookFindChk = setFindBookCheck(book);
 
         if (bookFindChk){
             showReBookMenu();
@@ -168,17 +172,6 @@ public class ManagerPage extends Common implements Show {
         }
     }
 
-
-
-    private void findBook() {
-        for (int i = 0; i < bookList.size(); i++) {
-            if (bName.equals(bookList.get(i).getbName())) {
-                temp = i;
-                bookFindChk = true;
-            }
-        }
-    }
-
     public void showAllBookList(List<Book> bookList){
         System.out.println(">> 도서 리스트를 출력합니다.");
         for (Book book : bookList) {
@@ -193,8 +186,6 @@ public class ManagerPage extends Common implements Show {
             if(book.getbUsing().equals("true")) {
               System.out.println(book);
               System.out.println();
-              // System.out.println(book.getBookCode() + book.getbName());
-
             }
         }
     }

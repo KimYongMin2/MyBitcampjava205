@@ -33,33 +33,13 @@ public class ReviewAddPage extends Common implements Show {
 
 				switch (menuButton) {
 				case 1:
-					bookList = bookCrud.getBookList(con);
-					findBook();
-					if (bookFindChk) {
-						setReviewComment();
-						System.out.println("▶ 리뷰 작성이 완료되었습니다!");
-						System.out.println("==========================");
-					}
+					reviewAdd();
 					break;
 				case 2:
-					System.out.println("▶ 작성된 리뷰 목록을 출력합니다");
-					System.out.println();
-					System.out.println("■■■■■■■■■■■ 리뷰 조회 ■■■■■■■■■■■");
-					if(viewReviews.size() > 0) {
-						for (int i = 0; i < viewReviews.size(); i++) {
-							System.out.println(viewReviews.get(i));
-						} 
-					} else {
-						System.out.println("[!] 작성된 리뷰가 존재하지 않습니다.");
-					}
+					reviewList();
 					break;
 				case 3:
-					System.out.println(">> 전체 도서 목록을 출력합니다");
-					System.out.println();
-					bookList = bookCrud.getBookList(con);
-					for (Book book : bookList) {
-						System.out.println(book);
-					}
+					bookList();
 					break;
 				case 4:
 					System.out.println("[!] 종료합니다");
@@ -75,12 +55,42 @@ public class ReviewAddPage extends Common implements Show {
 		}
 	}
 
-	public void setReviewComment() { // 리뷰입력
+	private void reviewAdd() {
+		bookList = bookCrud.getBookList(con);
+		showReviewAdd();
+		bName = ScannerUtil.getInputStringS(">> 리뷰를 작성하실 도서명을 입력하세요 : ");
+		findBook(bookList, bName);
+		if (bookFindChk) {
+			addReviewComment();
+		}
+	}
+
+	private void reviewList() {
+		showReviewList();
+		if(viewReviews.size() > 0) {
+			for (int i = 0; i < viewReviews.size(); i++) {
+				System.out.println(viewReviews.get(i));
+			}
+		} else {
+			System.out.println("[!] 작성된 리뷰가 존재하지 않습니다.");
+		}
+	}
+
+	private void bookList() {
+		System.out.println(">> 전체 도서 목록을 출력합니다");
+		System.out.println();
+		bookList = bookCrud.getBookList(con);
+		for (Book book : bookList) {
+			System.out.println(book);
+		}
+	}
+
+	public void addReviewComment() { // 리뷰입력
 		setScore();
 		setComment();
 		review = new Review(0, member.getMemberCode(), book.getBookCode(), rScore, rComment);
 		reviewCrud.insertReview(con, review);
-
+		showReviewAddSuccess();
 	}
 
 	private void setScore() {
@@ -103,8 +113,7 @@ public class ReviewAddPage extends Common implements Show {
 			}
 		}
 	}
-	
-	
+
 	private void setComment() {
 		showCommentMenu();
 		rComment = ScannerUtil.getInputStringS("▶ 한줄평 : ");
@@ -127,24 +136,5 @@ public class ReviewAddPage extends Common implements Show {
 		}
 	}
 
-	public void findBook() {// 책확인
-		bookFindChk = false;
-		while (!bookFindChk) {
-			System.out.println("================================");
-			bName = ScannerUtil.getInputStringS(">> 리뷰를 작성하실 도서명을 입력하세요 : ");
 
-			for (int i = 0; i < bookList.size(); i++) {
-				if (bName.equals(bookList.get(i).getbName())) {
-					temp = i;
-					bookFindChk = true;
-				}
-			}
-			if (!bookFindChk) {
-				System.out.println("[!] 해당 도서를 찾을 수 없습니다.");
-				break;
-			} else {
-				book = bookList.get(temp);
-			}
-		}
-	}
 }

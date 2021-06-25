@@ -129,4 +129,20 @@ public interface Show {
         System.out.println("▶ 새로운 도서를 추가하였습니다");
     }
 
+    default void showReviewAddSuccess() {
+        System.out.println("==========================");
+        System.out.println("▶ 리뷰 작성이 완료되었습니다!");
+        System.out.println("==========================");
+    }
+
+    default void showReviewAdd() {
+        System.out.println("==========================");
+        System.out.println("▶ 리뷰 작성");
+        System.out.println("==========================");
+    }
+
+    default void showReviewList() {
+        System.out.println("▶ 작성된 리뷰 목록을 출력합니다");
+        System.out.println("■■■■■■■■■■■ 리뷰 조회 ■■■■■■■■■■■");
+    }
 }
