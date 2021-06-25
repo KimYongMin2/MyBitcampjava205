@@ -59,7 +59,8 @@ public class ReviewAddPage extends Common implements Show {
 		bookList = bookCrud.getBookList(con);
 		showReviewAdd();
 		bName = ScannerUtil.getInputStringS(">> 리뷰를 작성하실 도서명을 입력하세요 : ");
-		findBook(bookList, bName);
+		book = findBook(bookList, bName);
+		bookFindChk = setFindBookCheck(book);
 		if (bookFindChk) {
 			addReviewComment();
 		}
