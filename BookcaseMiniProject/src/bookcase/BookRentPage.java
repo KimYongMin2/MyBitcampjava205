@@ -1,6 +1,5 @@
 package bookcase;
 
-import java.sql.*;
 import java.text.*;
 import java.util.*;
 import java.util.Date;
@@ -11,21 +10,9 @@ import bookcase.show.*;
 import bookcase.util.*;
 
 
-public class BookRentPage implements Show {
+public class BookRentPage extends CommonObject implements Show {
 
-	private boolean chk = false;
-	private static Connection con = JDBCconnecting.connecting();
-	private static BookCRUD bookCrud = BookCRUD.getInstance();
 	private static RentalCRUD rentalCrud = RentalCRUD.getInstance();
-	private static ArrayList<Book> bookList = new ArrayList<Book>();
-	private int menuButton = 0;
-	private Member member;
-	private Book book;
-	private int temp = 0;
-	private int bookcode=0;
-	private List<Using> usingBooks = new ArrayList<>();
-	private String bName;
-
 	public BookRentPage(Member member){
 		this.member = member;
 	}
@@ -60,7 +47,7 @@ public class BookRentPage implements Show {
 
 	public void usingBook(){
 		// 책확인
-		chk = false;
+		bookFindChk = false;
 		bookList = bookCrud.getBookList(con);
 
 		showRentalBookPage();
@@ -69,7 +56,7 @@ public class BookRentPage implements Show {
 
 		findBook();
 		
-		if(chk){
+		if(bookFindChk){
 			if(bookList.get(temp).getbUsing().equals("false")) {
 				addUsingBook();
 			} else { // bUsing = true
@@ -83,10 +70,10 @@ public class BookRentPage implements Show {
 		for(int i = 0; i < bookList.size(); i++) {
 			if(bName.equals(bookList.get(i).getbName())) {
 				temp = i;
-				chk = true;
+				bookFindChk = true;
 			}
 		}
-		if(!chk) {
+		if(!bookFindChk) {
 			System.out.println("[!] 해당 도서를 찾지 못하였습니다.");
 		} else { // chk = true
 			book = bookList.get(temp);
@@ -106,8 +93,6 @@ public class BookRentPage implements Show {
 		String afterWeek = new java.text.SimpleDateFormat("yyMMdd").format(week.getTime());    	
 
 		Using usingBook = new Using(0, toDay, afterWeek, member.getMemberCode(), book.getBookCode());
-
-		usingBooks.add(usingBook);
 		book.setbUsing("true");
 
 		rentalCrud.insertRental(con, usingBook);

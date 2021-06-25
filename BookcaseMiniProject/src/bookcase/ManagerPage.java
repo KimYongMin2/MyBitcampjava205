@@ -1,27 +1,14 @@
 package bookcase;
 
-import java.sql.*;
 import java.util.*;
-
 import bookcase.crud.*;
 import bookcase.object.*;
 import bookcase.show.*;
 import bookcase.util.*;
 
-public class ManagerPage implements Show {
-	
-    private static Connection con = JDBCconnecting.connecting();
-	private static BookCRUD bookCrud = BookCRUD.getInstance();
-	private static MemberCRUD memberCrud = MemberCRUD.getInstance();
-	private ArrayList<Book> bookList = new ArrayList<Book>();
-	private ArrayList<Member> memberList = new ArrayList<Member>();
-	
-    private String bName, bWriter, bPublisher, bGenre;
-    private int bPrice;
-    private String bAgeUsing;
-    private int temp;
-    private int menuButton = 0;
-    private boolean findCheck = false;
+public class ManagerPage extends CommonObject implements Show {
+
+    private static MemberCRUD memberCrud = MemberCRUD.getInstance();
     private int chkAge;
 
     public void bookManagerStart(){
@@ -82,9 +69,8 @@ public class ManagerPage implements Show {
         System.out.println("▶ 연령제한 여부 : ");
         chkAge = ScannerUtil.getInputIntegerS("(1) 네 (2) 아니오 : ");
         setAgeUsing();
-
-		bookCrud.insertBook(con, new Book(0, bName, bWriter, bPublisher,
-                bGenre, bPrice, bUsing, bAgeUsing));
+        book = new Book(0, bName, bWriter, bPublisher, bGenre, bPrice, bUsing, bAgeUsing);
+		bookCrud.insertBook(con, book);
 
         showAddBookSuccess();
 
@@ -110,14 +96,14 @@ public class ManagerPage implements Show {
         }
     }
 
-    public void deleteBook(ArrayList<Book> bookList) {	
-        findCheck = false;
+    public void deleteBook(List<Book> bookList) {
+        bookFindChk = false;
 
         bName = ScannerUtil.getInputStringS(">> 삭제할 도서명을 입력해주세요 : ");
         
         if(bookList != null) {
             findBook();
-            if(findCheck){
+            if(bookFindChk){
                 bookCrud.deleteBook(con, bookList.get(temp));
                 System.out.println("▶ 도서가 삭제되었습니다.\n");
             }else{
@@ -129,14 +115,14 @@ public class ManagerPage implements Show {
     }
 
 
-    public void reBook(ArrayList<Book> bookList){
+    public void reBook(List<Book> bookList){
 
-        findCheck = false;
+        bookFindChk = false;
         
         bName = ScannerUtil.getInputStringS(">> 수정하실 도서명을 입력하세요. : ");
         findBook();
 
-        if (findCheck){
+        if (bookFindChk){
             showReBookMenu();
             menuButton = ScannerUtil.getInputIntegerS(">> 수정하실 데이터를 선택하세요 : ");
 
@@ -188,12 +174,12 @@ public class ManagerPage implements Show {
         for (int i = 0; i < bookList.size(); i++) {
             if (bName.equals(bookList.get(i).getbName())) {
                 temp = i;
-                findCheck = true;
+                bookFindChk = true;
             }
         }
     }
 
-    public void showAllBookList(ArrayList<Book> bookList){
+    public void showAllBookList(List<Book> bookList){
         System.out.println(">> 도서 리스트를 출력합니다.");
         for (Book book : bookList) {
             System.out.println(book);
@@ -213,7 +199,7 @@ public class ManagerPage implements Show {
         }
     }
     
-    public void showAllMember(ArrayList<Member> members) {
+    public void showAllMember(List<Member> members) {
     	System.out.println(">>전체 회원 리스트를 출력합니다.");
     	for(Member member: members) {
     		if(member.getId().equals("admin")) { // 관리자 제외

@@ -6,17 +6,13 @@ import bookcase.object.*;
 import bookcase.show.*;
 import bookcase.util.*;
 
-public class MyInfoPage implements Show {
-	
-	Member member;
+public class MyInfoPage extends CommonObject implements Show {
+
+    private MemberHandler mh = new MemberHandler();
+
 	public MyInfoPage(Member member) {
 		this.member = member;
 	}
-	
-	private static Connection con = JDBCconnecting.connecting();
-	MemberHandler mh = new MemberHandler();
-	
-    private int menuButton = 0;
 	
 	void MyInfoEditStrat() {
 		while (menuButton != 4) {

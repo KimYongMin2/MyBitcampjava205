@@ -31,7 +31,7 @@ public class MemberHandler {
 	 *  @author 지원
 	 */
 
-	private boolean chk7;
+	private boolean chkMemberSize;
 
 	private static Connection con = JDBCconnecting.connecting();
 	private MemberCRUD memberCrud = MemberCRUD.getInstance();
@@ -241,9 +241,9 @@ public class MemberHandler {
 			System.out.println("■■■■■■■■■■■ 관리자 로그인 ■■■■■■■■■■■");
 			members = memberCrud.getMemberList(con);
 			if(members.size() > 0) {
-				chk7 = true;
+				chkMemberSize = true;
 				boolean idCheck = false;
-				while (chk7) {
+				while (chkMemberSize) {
 					System.out.print("▶ ID : ");
 					/*입력*/String ID = ScannerUtil.getInputString();
 					isEmpty(ID);

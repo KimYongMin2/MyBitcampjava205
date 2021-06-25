@@ -6,32 +6,18 @@ import java.util.*;
 import bookcase.crud.BookCRUD;
 import bookcase.crud.RentalCRUD;
 import bookcase.object.Book;
+import bookcase.object.CommonObject;
 import bookcase.object.Member;
 import bookcase.object.Using;
 import bookcase.show.*;
 import bookcase.util.JDBCconnecting;
 import bookcase.util.ScannerUtil;
 
-public class ReturnBookPage implements Show {
-    private boolean chk = false;
-    private boolean chk2 = false;
-
+public class ReturnBookPage extends CommonObject implements Show {
     private static BookCRUD bookCrud = BookCRUD.getInstance();
-    private static Connection con = JDBCconnecting.connecting();
     private static RentalCRUD rentalCrud = RentalCRUD.getInstance();
-    
-    private ArrayList<Book> bookList = new ArrayList<>();
     private ArrayList<Using> usingBooks = new ArrayList<>();
-   
-    private int menuButton = 0;
-    private Member member;
-    private Book book;
     private Using use;
-    private int temp = 0;
-    private int temp2 = 0;
-    private int bookcode=0;
-
-    private String bName;
 
     public ReturnBookPage(Member member){
         this.member = member;
@@ -65,7 +51,7 @@ public class ReturnBookPage implements Show {
 
     public void returnBook(){
         // 책확인
-        chk = false;
+        bookFindChk = false;
         bookList = rentalCrud.getMyRentalList(con, member);
         usingBooks = rentalCrud.getRentalTable(con);
         showReturnBookPage();
@@ -74,14 +60,14 @@ public class ReturnBookPage implements Show {
         bName = ScannerUtil.getInputString();
 
         findBook();
+        book = bookList.get(temp);
         findBookCode();
 
-        if(!chk) {
+        if(!bookFindChk) {
         	System.out.println("[!] 반납실패. 다시 확인해주세요.");
         }
         else { // chk = true
-            book = bookList.get(temp);
-            use = usingBooks.get(temp2);
+            use = usingBooks.get(temp);
             if(book.getbUsing().equals("true")) {
                 deleteUsingBook();
                 System.out.println("▶ 반납이 완료되었습니다.");
@@ -95,17 +81,19 @@ public class ReturnBookPage implements Show {
         for(int i = 0; i < bookList.size(); i++) {
             if(bName.equals(bookList.get(i).getbName())) {
                 temp = i;
-                chk = true;
-            }
+                bookFindChk = true;
+            } else bookFindChk = false;
         }
     }
     
     private void findBookCode() {
     	for(int i = 0; i < usingBooks.size() ; i ++) {
-    		if(bookcode == usingBooks.get(i).getBookCode()) {
-    			temp2 =i;
-    			chk2 = true;
-    		}
+    		if(book.getBookCode() == usingBooks.get(i).getBookCode()) {
+    			temp =i;
+                bookFindChk = true;
+    		}else{
+                bookFindChk = false;
+            }
     	}
     }
 

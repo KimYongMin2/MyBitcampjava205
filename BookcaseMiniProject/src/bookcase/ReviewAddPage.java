@@ -1,6 +1,5 @@
 package bookcase;
 
-import java.sql.*;
 import java.util.*;
 
 import bookcase.crud.*;
@@ -8,26 +7,16 @@ import bookcase.object.*;
 import bookcase.show.*;
 import bookcase.util.*;
 
-public class ReviewAddPage implements Show {
-	
-	//
-	private static Connection con = JDBCconnecting.connecting();
+public class ReviewAddPage extends CommonObject implements Show {
+
 	private ReviewCRUD reviewCrud = ReviewCRUD.getInstance();
 	private BookCRUD bookCrud = BookCRUD.getInstance();
 	private ViewReviewCRUD viewReviewCrud = ViewReviewCRUD.getInstance();
-	private ArrayList<Review> reviews = new ArrayList<>();
-	private ArrayList<Book> books = new ArrayList<>();
 	private ArrayList<ViewReview> viewReviews = new ArrayList<>();
-	//
-	
+
+	private Review review;
 	private double rScore; // 별점
 	private String rComment; // 한줄평
-	private Member member;
-	private Book book;
-	private int temp;
-	private int menuButton;
-	private boolean chkFindBook;
-	private String bName;
 
 	public ReviewAddPage(Member member) {
 		this.member = member;
@@ -37,18 +26,16 @@ public class ReviewAddPage implements Show {
 	public void reviewAddStart() {
 		while (menuButton != 4) {
 			try {
-				reviews = reviewCrud.getReviewList(con); //오라클에서 리뷰 테이블 전체 받음
-				books = bookCrud.getBookList(con); //오라클에서 북 테이블 전체 받음
+				bookList = bookCrud.getBookList(con); //오라클에서 북 테이블 전체 받음
 				viewReviews = viewReviewCrud.getReviewList(con);
 				showReviewAddMenu();
 				menuButton = ScannerUtil.getInputIntegerS(">> 원하시는 메뉴를 선택하세요 : ");
 
 				switch (menuButton) {
 				case 1:
-					reviews = reviewCrud.getReviewList(con);
-					books = bookCrud.getBookList(con);
+					bookList = bookCrud.getBookList(con);
 					findBook();
-					if (chkFindBook) {
+					if (bookFindChk) {
 						setReviewComment();
 						System.out.println("▶ 리뷰 작성이 완료되었습니다!");
 						System.out.println("==========================");
@@ -69,9 +56,8 @@ public class ReviewAddPage implements Show {
 				case 3:
 					System.out.println(">> 전체 도서 목록을 출력합니다");
 					System.out.println();
-					reviews = reviewCrud.getReviewList(con);
-					books = bookCrud.getBookList(con);
-					for (Book book : books) {
+					bookList = bookCrud.getBookList(con);
+					for (Book book : bookList) {
 						System.out.println(book);
 					}
 					break;
@@ -90,18 +76,10 @@ public class ReviewAddPage implements Show {
 	}
 
 	public void setReviewComment() { // 리뷰입력
-		reviews = reviewCrud.getReviewList(con);
 		setScore();
 		setComment();
-
-		/**
-		 * 리뷰 DB에 넣게 처리
-		 */
-	
-		reviewCrud.insertReview(con, new Review
-				(0, member.getMemberCode(), 
-						book.getBookCode(), 
-						rScore, rComment));
+		review = new Review(0, member.getMemberCode(), book.getBookCode(), rScore, rComment);
+		reviewCrud.insertReview(con, review);
 
 	}
 
@@ -150,31 +128,23 @@ public class ReviewAddPage implements Show {
 	}
 
 	public void findBook() {// 책확인
-		chkFindBook = false;
-		while (!chkFindBook) {
+		bookFindChk = false;
+		while (!bookFindChk) {
 			System.out.println("================================");
 			bName = ScannerUtil.getInputStringS(">> 리뷰를 작성하실 도서명을 입력하세요 : ");
 
-			for (int i = 0; i < books.size(); i++) {
-				if (bName.equals(books.get(i).getbName())) {
+			for (int i = 0; i < bookList.size(); i++) {
+				if (bName.equals(bookList.get(i).getbName())) {
 					temp = i;
-					chkFindBook = true;
+					bookFindChk = true;
 				}
 			}
-			if (!chkFindBook) {
+			if (!bookFindChk) {
 				System.out.println("[!] 해당 도서를 찾을 수 없습니다.");
 				break;
 			} else {
-				book = books.get(temp);
+				book = bookList.get(temp);
 			}
 		}
 	}
 }
-
-// 멤버코드 -> 받아서 (memberCode)
-// 책코드 -> 책 검색 (bookCode)
-
-// review class
-// 멤버코드get-책코드get-(String한줄평-float평점: 사용자가 직접입력)
-//
-// List<review> 만들어서 삽입
