@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.14" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="bookcase.BookRentPage" project="BookcaseMiniProject" 
+  <class id="1" language="java" name="bookcase.page.BookRentPage" project="BookcaseMiniProject"
     file="/BookcaseMiniProject/src/bookcase/BookRentPage.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="392" y="184"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -19,7 +19,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="bookcase.Start" project="BookcaseMiniProject" 
+  <class id="3" language="java" name="bookcase.page.Start" project="BookcaseMiniProject"
     file="/BookcaseMiniProject/src/bookcase/Start.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="230" y="65"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -28,7 +28,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="bookcase.ManagerPage" project="BookcaseMiniProject" 
+  <class id="4" language="java" name="bookcase.page.ManagerPage" project="BookcaseMiniProject"
     file="/BookcaseMiniProject/src/bookcase/ManagerPage.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="905" y="248"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -37,7 +37,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="bookcase.MemberPage" project="BookcaseMiniProject" 
+  <class id="5" language="java" name="bookcase.page.MemberPage" project="BookcaseMiniProject"
     file="/BookcaseMiniProject/src/bookcase/MemberPage.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="103" y="215"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -55,7 +55,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="bookcase.MyInfoPage" project="BookcaseMiniProject" 
+  <class id="7" language="java" name="bookcase.page.MyInfoPage" project="BookcaseMiniProject"
     file="/BookcaseMiniProject/src/bookcase/MyInfoPage.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="123" y="762"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -64,7 +64,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="bookcase.ReturnBookPage" project="BookcaseMiniProject" 
+  <class id="8" language="java" name="bookcase.page.ReturnBookPage" project="BookcaseMiniProject"
     file="/BookcaseMiniProject/src/bookcase/ReturnBookPage.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="393" y="611"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -73,7 +73,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="bookcase.ReviewAddPage" project="BookcaseMiniProject" 
+  <class id="9" language="java" name="bookcase.page.ReviewAddPage" project="BookcaseMiniProject"
     file="/BookcaseMiniProject/src/bookcase/ReviewAddPage.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="631" y="611"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -82,7 +82,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="bookcase.ShowBookListPage" project="BookcaseMiniProject" 
+  <class id="10" language="java" name="bookcase.page.ShowBookListPage" project="BookcaseMiniProject"
     file="/BookcaseMiniProject/src/bookcase/ShowBookListPage.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="610" y="178"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

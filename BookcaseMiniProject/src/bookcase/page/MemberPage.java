@@ -1,4 +1,4 @@
-package bookcase;
+package bookcase.page;
 
 import bookcase.object.Common;
 import bookcase.object.Member;

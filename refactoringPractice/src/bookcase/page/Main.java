@@ -1,6 +1,4 @@
-package bookcase;
-
-import bookcase.page.Start;
+package bookcase.page;
 
 public class Main {
     public static void main(String[] args) {
@@ -9,7 +7,7 @@ public class Main {
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
-        new Start().startStart();
+        new StartPage().startStart();
     }
 }
 

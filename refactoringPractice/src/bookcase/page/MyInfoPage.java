@@ -1,18 +1,21 @@
-package bookcase;
+package bookcase.page;
 
+import bookcase.*;
 import bookcase.object.*;
 import bookcase.show.*;
 import bookcase.util.*;
 
-public class MyInfoPage extends Common implements Show {
-
-    private MemberHandler mh = new MemberHandler();
-
+public class MyInfoPage implements Show {
+	
+	Member member;
 	public MyInfoPage(Member member) {
 		this.member = member;
 	}
 	
-	void MyInfoEditStrat() {
+	MemberHandler mh = new MemberHandler();
+    private int menuButton = 0;
+	
+	public void MyInfoEditStrat() {
 		while (menuButton != 4) {
 		    try {
                 showEditMyInfoMenu();

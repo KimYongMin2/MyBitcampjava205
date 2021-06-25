@@ -1,4 +1,4 @@
-package bookcase;
+package bookcase.page;
 
 import java.util.*;
 import bookcase.crud.*;
