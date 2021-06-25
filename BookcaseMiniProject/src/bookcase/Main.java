@@ -1,7 +1,5 @@
 package bookcase;
 
-import bookcase.page.Start;
-
 public class Main {
     public static void main(String[] args) {
     	try {
