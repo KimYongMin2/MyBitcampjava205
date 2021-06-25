@@ -1,5 +1,6 @@
 package bookcase.object;
 
+import bookcase.crud.BookCRUD;
 import bookcase.util.JDBCconnecting;
 
 import java.sql.Connection;
@@ -9,6 +10,7 @@ import java.util.List;
 public class Common {
     protected static Connection con = JDBCconnecting.connecting();
     protected static List<Book> bookList = new ArrayList<>();
+    protected static BookCRUD bookCrud = BookCRUD.getInstance();
     protected List<Member> memberList = new ArrayList<>();
     protected int menuButton = 0;
     protected Member member;
@@ -33,7 +35,6 @@ public class Common {
     protected boolean setFindBookCheck(Book book) {
         bookFindChk = false;
         if(book == null) {
-            bookFindChk = false;
             System.out.println("[!] 해당 도서를 찾지 못하였습니다.");
         }else {
             bookFindChk = true;

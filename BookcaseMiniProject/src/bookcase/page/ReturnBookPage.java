@@ -62,7 +62,8 @@ public class ReturnBookPage extends Common implements Show {
 
         if(!bookFindChk) {
         	System.out.println("[!] 반납실패. 다시 확인해주세요.");
-        } else { // chk = true
+        }
+        else { // chk = true
             use = usingBooks.get(temp);
             checkUsingbook = setCheckUsingBook();
             if(checkUsingbook) {
@@ -75,16 +76,14 @@ public class ReturnBookPage extends Common implements Show {
     }
     
     private void findBookCode() {
-        if(bookFindChk) {
-            for (int i = 0; i < usingBooks.size(); i++) {
-                if (book.getBookCode() == usingBooks.get(i).getBookCode()) {
-                    temp = i;
-                    bookFindChk = true;
-                } else {
-                    bookFindChk = false;
-                }
+    	for(int i = 0; i < usingBooks.size() ; i ++) {
+    		if(book.getBookCode() == usingBooks.get(i).getBookCode()) {
+    			temp =i;
+                bookFindChk = true;
+    		}else{
+                bookFindChk = false;
             }
-        }
+    	}
     }
 
     public void deleteUsingBook() {

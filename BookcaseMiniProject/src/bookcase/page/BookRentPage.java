@@ -12,7 +12,6 @@ import bookcase.util.*;
 
 public class BookRentPage extends Common implements Show {
 
-	private static BookCRUD bookCrud = BookCRUD.getInstance();
 	private static RentalCRUD rentalCrud = RentalCRUD.getInstance();
 	public BookRentPage(Member member){
 		this.member = member;
@@ -55,13 +54,12 @@ public class BookRentPage extends Common implements Show {
 
 		book = findBook(bookList, bName);
 		bookFindChk = setFindBookCheck(book);
-		if (bookFindChk) {
-			checkUsingbook = setCheckUsingBook();
-			if (!checkUsingbook){
-				addUsingBook();
-			}else{
-				System.out.println("[!] 이미 대여중인 책입니다.");
-			}
+		checkUsingbook = setCheckUsingBook();
+
+		if (!checkUsingbook){
+			addUsingBook();
+		}else{
+			System.out.println("[!] 이미 대여중인 책입니다.");
 		}
 	}
 

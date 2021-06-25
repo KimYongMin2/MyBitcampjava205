@@ -9,7 +9,6 @@ import bookcase.util.*;
 public class ManagerPage extends Common implements Show {
 
     private static MemberCRUD memberCrud = MemberCRUD.getInstance();
-    private static BookCRUD bookCrud = BookCRUD.getInstance();
     private int chkAge;
 
     public void bookManagerStart(){
@@ -101,6 +100,7 @@ public class ManagerPage extends Common implements Show {
         bookFindChk = false;
 
         bName = ScannerUtil.getInputStringS(">> 삭제할 도서명을 입력해주세요 : ");
+        
         if(bookList == null) {
             System.out.println("[!] 현재 삭제할 도서가 존재하지 않습니다.");
         }else{
@@ -108,7 +108,7 @@ public class ManagerPage extends Common implements Show {
             bookFindChk = setFindBookCheck(book);
 
             if(bookFindChk){
-                bookCrud.deleteBook(con, book);
+                bookCrud.deleteBook(con, bookList.get(temp));
                 System.out.println("▶ 도서가 삭제되었습니다.\n");
             }else{
                 System.out.println("[!] 해당하는 도서를 찾지 못했습니다.");
@@ -134,37 +134,37 @@ public class ManagerPage extends Common implements Show {
                 case 1:
                     bName = ScannerUtil.getInputStringS("▶ 도서명 : ");
                     if (checkSameBookName()) return;
-                    book.setbName(bName);
+                    bookList.get(temp).setbName(bName);
                     break;
                 case 2:
                     bWriter = ScannerUtil.getInputStringS("▶ 저 자 : ");
-                    book.setbWriter(bWriter);
+                    bookList.get(temp).setbWriter(bWriter);
                     break;
                 case 3:
                     bPublisher = ScannerUtil.getInputStringS("▶ 출판사 : ");
-                    book.setbPublisher(bPublisher);
+                    bookList.get(temp).setbPublisher(bPublisher);
                     break;
                 case 4:
                     bGenre = ScannerUtil.getInputStringS("▶ 장 르 : ");
-                    book.setbGenre(bGenre);
+                    bookList.get(temp).setbGenre(bGenre);
                     break;
                 case 5:
                     bPrice = ScannerUtil.getInputIntegerS("▶ 가 격 : ");
-                    book.setbPrice(bPrice);
+                    bookList.get(temp).setbPrice(bPrice);
                     break;
                 case 6:
                     menuButton = 0;
                 	System.out.println("▶ 연령제한 여부");
                     chkAge = ScannerUtil.getInputIntegerS("(1) 네 (2) 아니오 : ");
                     setAgeUsing();
-                    book.setbAgeUsing(bAgeUsing);
+                    bookList.get(temp).setbAgeUsing(bAgeUsing);
                     break;
                 default:
                 	System.out.println("error : 잘못된 입력입니다.");
                     break;
             }
             
-            bookCrud.updateBook(con, book);
+            bookCrud.updateBook(con, bookList.get(temp));
             System.out.println("▶ 수정이 완료되었습니다.\n");
             
         } else {
