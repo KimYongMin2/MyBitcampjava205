@@ -1,12 +1,13 @@
-package bookcase;
+package bookcase.page;
 
-import bookcase.object.Common;
-import bookcase.object.Member;
-import bookcase.show.Show;
-import bookcase.util.ScannerUtil;
+import bookcase.*;
+import bookcase.object.*;
+import bookcase.show.*;
+import bookcase.util.*;
 
 public class MemberPage extends Common implements Show {
-
+    private int menuButton = 0;
+    private Member member;
     public MemberPage(Member member){
         this.member = member;
     }

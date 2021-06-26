@@ -1,21 +1,23 @@
-package bookcase;
+package bookcase.page;
 
+import bookcase.*;
 import bookcase.object.*;
 import bookcase.show.*;
 import bookcase.util.*;
 
-public class MyInfoPage extends Common implements Show {
-
-    private MemberHandler mh = new MemberHandler();
-
+public class MyInfoPage implements Show {
+	
+	Member member;
 	public MyInfoPage(Member member) {
 		this.member = member;
 	}
+    private int menuButton = 0;
 	
-	void MyInfoEditStrat() {
+	public void MyInfoEditStrat() {
 		while (menuButton != 4) {
 		    try {
                 showEditMyInfoMenu();
+                MemberHandler mh = new MemberHandler();
                 menuButton = ScannerUtil.getInputIntegerS(">> 원하시는 메뉴를 선택하세요 : ");
                 switch (menuButton) {
                 	case 1: // 내 정보 확인하기

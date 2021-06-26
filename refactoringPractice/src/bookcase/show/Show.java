@@ -128,7 +128,7 @@ public interface Show {
         System.out.println("================================");
         System.out.println("▶ 새로운 도서를 추가하였습니다");
     }
-
+    
     default void showReviewAddSuccess() {
         System.out.println("==========================");
         System.out.println("▶ 리뷰 작성이 완료되었습니다!");

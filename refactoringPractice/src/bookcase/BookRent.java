@@ -2,7 +2,6 @@ package bookcase;
 
 import java.text.*;
 import java.util.*;
-import java.util.Date;
 
 import bookcase.crud.*;
 import bookcase.object.*;
@@ -10,56 +9,27 @@ import bookcase.show.*;
 import bookcase.util.*;
 
 
-public class BookRentPage extends Common implements Show {
+public class BookRent extends Common implements Show {
+	
+	private BookCRUD bookCrud = BookCRUD.getInstance();
+	private RentalCRUD rentalCrud = RentalCRUD.getInstance();
 
-	private static BookCRUD bookCrud = BookCRUD.getInstance();
-	private static RentalCRUD rentalCrud = RentalCRUD.getInstance();
-	public BookRentPage(Member member){
+	public BookRent(Member member){
 		this.member = member;
 	}
 
-	public void BookUsingStart() {
-		while (menuButton != 2) {
-			try {
-				showBookUsingMenu();
-				menuButton = ScannerUtil.getInputIntegerS(">> 원하시는 메뉴를 선택하세요. : ");
-
-				switch (menuButton) {
-				case 1:
-					// 대여
-					usingBook();
-					break;
-				case 2:
-					// 종료
-					System.out.println("[!] 전 단계로 돌아갑니다.");
-					break;
-				default:
-					System.out.println("error : 잘못된 입력입니다.");
-					break;
-				}
-			}catch (NumberFormatException e){
-				System.out.println("error : 숫자로 입력해주세요");
-			}
-		}
-
-	}
-
-	public void usingBook(){
-		// 책확인
-		bookList = bookCrud.getBookList(con);
+	public void usingBook(){ //도서 대여하기
+		bookList = bookCrud.getBookList(con); // 전체 책 테이블 가져오기
 		bookFindChk = false;
-
-		showRentalBookPage();
-
+		showRentalBookPage(); //대여 페이지 입니다 라는 문구 출력
 		bName = ScannerUtil.getInputStringS(">> 대여할 도서명을 입력해주세요 : ");
-
 		book = findBook(bookList, bName);
 		bookFindChk = setFindBookCheck(book);
-		if (bookFindChk) {
+		if(bookFindChk){
 			checkUsingbook = setCheckUsingBook();
-			if (!checkUsingbook){
+			if(!checkUsingbook) {
 				addUsingBook();
-			}else{
+			} else { // bUsing = true : 누군가 사용 중
 				System.out.println("[!] 이미 대여중인 책입니다.");
 			}
 		}
@@ -78,9 +48,10 @@ public class BookRentPage extends Common implements Show {
 		String afterWeek = new java.text.SimpleDateFormat("yyMMdd").format(week.getTime());    	
 
 		Using usingBook = new Using(0, toDay, afterWeek, member.getMemberCode(), book.getBookCode());
-		book.setbUsing("true");
 
-		rentalCrud.insertRental(con, usingBook);
+		book.setbUsing("true"); // 아까 담아놨던 bookList.get(temp)의 using 값을 true로 바꿈
+
+		rentalCrud.insertRental(con, usingBook); //대여 테이블에 위의 내용 반영
 		bookCrud.updateBook(con, book);
 		System.out.println("[!] 대여가 완료되었습니다.");
 	}
