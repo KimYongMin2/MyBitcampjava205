@@ -4,6 +4,7 @@ import java.util.*;
 
 import bookcase.crud.BookCRUD;
 import bookcase.crud.RentalCRUD;
+import bookcase.object.Book;
 import bookcase.object.Common;
 import bookcase.object.Member;
 import bookcase.object.Using;
@@ -13,7 +14,7 @@ import bookcase.util.ScannerUtil;
 public class ReturnBookPage extends Common implements Show {
     private static BookCRUD bookCrud = BookCRUD.getInstance();
     private static RentalCRUD rentalCrud = RentalCRUD.getInstance();
-    private ArrayList<Using> usingBooks = new ArrayList<>();
+    private List<Using> usingBooks = new ArrayList<>();
     private Using use;
 
     public ReturnBookPage(Member member){
@@ -51,30 +52,33 @@ public class ReturnBookPage extends Common implements Show {
         bookList = rentalCrud.getMyRentalList(con, member);
         usingBooks = rentalCrud.getRentalTable(con);
         showReturnBookPage();
+        if(bookList.size()>0) {
+            System.out.print(">> 반납하실 도서명을 입력하세요 : ");
+            bName = ScannerUtil.getInputString();
 
-        System.out.print(">> 반납하실 도서명을 입력하세요 : ");
-        bName = ScannerUtil.getInputString();
+            book = findBook(bookList, bName);
+            bookFindChk = setFindBookCheck(book);
 
-        book = findBook(bookList, bName);
-        bookFindChk = setFindBookCheck(book);
+            findBookCode(book);
 
-        findBookCode();
-
-        if(!bookFindChk) {
-        	System.out.println("[!] 반납실패. 다시 확인해주세요.");
-        } else { // chk = true
-            use = usingBooks.get(temp);
-            checkUsingbook = setCheckUsingBook();
-            if(checkUsingbook) {
-                deleteUsingBook();
-                System.out.println("▶ 반납이 완료되었습니다.");
-            }else{
+            if (!bookFindChk) {
                 System.out.println("[!] 반납실패. 다시 확인해주세요.");
+            } else { // chk = true
+                use = usingBooks.get(temp);
+                checkUsingbook = setCheckUsingBook(book);
+                if (checkUsingbook) {
+                    deleteUsingBook();
+                    System.out.println("▶ 반납이 완료되었습니다.");
+                } else {
+                    System.out.println("[!] 반납실패. 다시 확인해주세요.");
+                }
             }
+        }else{
+            System.out.println("[!] 반납할 도서가 없습니다");
         }
     }
     
-    private void findBookCode() {
+    private void findBookCode(Book book) {
         if(bookFindChk) {
             for (int i = 0; i < usingBooks.size(); i++) {
                 if (book.getBookCode() == usingBooks.get(i).getBookCode()) {

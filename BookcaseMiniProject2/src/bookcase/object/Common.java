@@ -41,9 +41,9 @@ public class Common {
         return bookFindChk;
     }
 
-    protected boolean setCheckUsingBook() {
+    protected boolean setCheckUsingBook(Book book) {
         if(bookFindChk){
-            if(bookList.get(temp).getbUsing().equals("false")) {
+            if(book.getbUsing().equals("false")) {
                 checkUsingbook = false;
             } else {
                 checkUsingbook = true;

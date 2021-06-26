@@ -56,7 +56,7 @@ public class BookRentPage extends Common implements Show {
 		book = findBook(bookList, bName);
 		bookFindChk = setFindBookCheck(book);
 		if (bookFindChk) {
-			checkUsingbook = setCheckUsingBook();
+			checkUsingbook = setCheckUsingBook(book);
 			if (!checkUsingbook){
 				addUsingBook();
 			}else{
