@@ -23,11 +23,11 @@ public class Common {
         for (int i = 0; i < bookList.size(); i++) {
             if (bName.equals(bookList.get(i).getbName())) {
                 book = bookList.get(i);
-            } else {
+                break;
+            }else{
                 book = null;
             }
-        }
-        return book;
+        }return book;
     }
 
     protected boolean setFindBookCheck(Book book) {
