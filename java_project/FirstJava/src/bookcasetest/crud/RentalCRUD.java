@@ -229,6 +229,8 @@ public class RentalCRUD {
 			CloseUtil.close(pstmt);
 		}
 	}
+
+
 }
 
 

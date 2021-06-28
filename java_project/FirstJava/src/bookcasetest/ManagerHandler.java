@@ -63,7 +63,7 @@ public class ManagerHandler extends Common implements Show {
 		if(bookList == null) {
 			System.out.println("[!] 현재 삭제할 도서가 존재하지 않습니다.");
 		} else {
-			book = findBook(bookList, bName);
+			book = bookCrud.findBook(con,bName);
 			bookFindChk = setFindBookCheck(book);
 			if(bookFindChk) {
 				bookCrud.deleteBook(con, book);
@@ -80,7 +80,7 @@ public class ManagerHandler extends Common implements Show {
 
 		bName = ScannerUtil.getInputStringS(">> 수정하실 도서명을 입력하세요. : ");
 
-		book = findBook(bookList, bName);
+		book = bookCrud.findBook(con, bName);
 		bookFindChk = setFindBookCheck(book);
 
 		if (bookFindChk) {

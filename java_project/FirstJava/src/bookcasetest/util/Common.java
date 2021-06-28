@@ -22,19 +22,6 @@ public class Common {
 	protected boolean checkUsingbook;
 	protected int bookcode, bPrice;
 	protected String bName, bWriter, bPublisher, bGenre, bAgeUsing;
-
-
-	protected Book findBook(List<Book> bookList, String bName) {
-		for (int i = 0; i < bookList.size(); i++) {
-			if (bName.equals(bookList.get(i).getbName())) {
-				book = bookList.get(i);
-				break;
-			} else {
-				book = null;
-			}
-		}
-		return book;
-	}
 	
 
 	protected boolean setFindBookCheck(Book book) {
