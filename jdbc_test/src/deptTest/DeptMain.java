@@ -14,7 +14,11 @@ public class DeptMain {
 
         try {
             // 1. 드라이버 로드
-            Class.forName("oracle.jdbc.driver.OracleDriver");
+            // 오라클
+//            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+            //mysql
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
             while(true) {
                 System.out.println("부서관리 프로그램");

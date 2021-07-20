@@ -22,10 +22,15 @@ public class DeptManager {
         // Connection 객체 생성 -> 트렌젝션 처리
         Connection conn = null;
 
-        // 2. 연결
-        String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
-        String user = "hr";
-        String pw = "tiger";
+//        // 2. 연결
+        // 오라클
+//        String jdbcUrl = "jdbc:oracle:thin:@localhost:1521:xe";
+//        String user = "hr";
+//        String pw = "tiger";
+        // mysql
+        String jdbcUrl = "jdbc:mysql://localhost:3306/project?serverTimezone=UTC";
+        String user = "bit";
+        String pw = "bit";
         try {
             conn = DriverManager.getConnection(jdbcUrl, user, pw);
 
@@ -144,18 +149,11 @@ public class DeptManager {
 
             int result = dao.deleteDept(conn, deptno);
 
-            if(result>0) {
+            if (result > 0) {
                 System.out.println("삭제되었습니다.");
             } else {
                 System.out.println("해당 부서의 정보가 없습니다.");
             }
-
-
-
-
-
-
-
 
 
         } catch (SQLException e) {
